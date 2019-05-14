@@ -12,6 +12,8 @@ Your host: Matt Dray, GDS data scientist, [@mattdray](https://twitter.com/mattdr
 
 I'm going to walk through the ['Teach a person to Swirl'](https://www.rostrum.blog/2019/05/10/swirlify/) blogpost and live demo Swirl and Swirlify.
 
+See `session-notes.md` for a rough structure.
+
 ## Your homework
 
 1. Beginners: try Swirl if you want to learn some R
