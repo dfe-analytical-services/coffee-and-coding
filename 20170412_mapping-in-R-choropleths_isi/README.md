@@ -1,0 +1,3 @@
+# Coffee & Coding: Choropleth Maps in R
+
+Isi originally gave a talk to Coffee & Coding (C & C) on Choropleth Maps in R on the 12th April 2017. She delivered an augmented - and funkier - version to the Department for Transport's (DfT) C & C on the 10th October 2018. The resources for _that_ talk can be found on DfT's C & C [Github](https://github.com/departmentfortransport/coffee-and-coding/tree/master/20181010_Choropleth_Maps_in_R).  
