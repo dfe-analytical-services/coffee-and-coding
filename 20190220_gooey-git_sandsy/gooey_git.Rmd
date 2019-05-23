@@ -22,11 +22,11 @@ Ah ha, well you know a GUI - a graphical user interface? Computer people pronoun
 
 # Introduction
 
-Yo and behold folks. Beneath, y'all shall see how to start using git with your analytical projects. 
+Yo and behold folks. Beneath, y'all shall see how to start using git with your analytical projects. But first things first, _what is Git?_
 
 > Git is the best version control system for files (as at 2019)
 
-In doing so, you will be using the latest and greatest version control system to:
+By using it, you will be using the latest and greatest version control system to:
 
  * make your analysis more auditable; 
  * forever banish annoying manual version control like .v2, .v3, .v3final, .v4FINALFINAL!!!!!!; and, 
@@ -38,7 +38,7 @@ But to reap these benefits, y'all need to know how to use git. Well hang tight, 
 
 Before we go any further, we need to get oragnised. Anytime you do analytical work that requires code (such as SQL and R scripts), you should create an [R project](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects). This just creates a folder in file explorer where you can house all documents related to the work you're doing. It also (once you've installed and configured git, which shall be shown in the next section) generates a git repository in that folder, allowing you to version control the files in that folder. 
 
-Also, git works best on code files (R, SQL, Python, text files) as it records the difference between different versions. It's not _that_ good on files like Excel and Word, as those files are not in binary, thus you can't see where the differences are between different versions (when you look at committed files like this in the history pane, you will just see scrambled symbols). Thus, I'd advise to just use git to record changes in your code files, and then commit excels or R Markdowns you send off to customers for record-keeping.
+Also, git works best on code files (R, SQL, Python, text files) as it records the difference between different versions you commit (committing is explained below). It's not _that_ good on files like Excel and Word, as those files are not in binary, thus you can't see where the differences are between different versions (when you look at committed files like this in the history pane, you will just see scrambled symbols). Thus, I'd advise to just use git to record changes in your code files, and then commit excels words, or htmls you send off to customers for record-keeping.
 
 # Installation and configuration 
 
@@ -70,11 +70,11 @@ And *boom*, you're ready to _git_ on it. So let's _git_ with it.
  
 # Gitting it on in an R Project
 
-In git, you work with files in R as you normally do. Then, once you’ve hit a stage where you want a *save* of where you’re at (usually after adding a big-enough change to your code that makes it do something new that it didn't do before the change), you save the files you’re working with, `stage` them by clicking the boxes to the left of the files in the Git pane, and then `commit` those staged files with the commit button.
+In git, you work with files in R as you normally do. Then, once you’ve hit a stage where you want a *save* of where you’re at (usually after adding a change to your code that makes it do something different that it didn't do before the change), you save the files you’re working with, `stage` them by clicking the boxes to the left of the files in the Git pane, and then `commit` those staged files with the commit button.
 
 <img src = "images/02.png">
 
-Once you do this, you’ll be prompted to add a message to the *changes you want to commit*. Think of it like saving Tomb Raider, or Medal of Honor. The moment you save the progress you’ve made in that game, you can go back to that point if you want. The act of *committing* a set of files is just you saving the progress you’ve made in that code – allowing you to go back to that point if you want. Only the difference here is that you say, in the commit message, what you did between your last save and this one.
+Once you do this, you’ll be prompted to add a message to the *changes you want to commit*. Think of it like saving _Tomb Raider_, or _Medal of Honor_. The moment you save the progress you’ve made in that game, you can go back to that point if you want. The act of *committing* a set of files is just you saving the progress you’ve made in that code – allowing you to go back to that point if you want. Only the difference here is that you say, in the commit message, what you did between your last save and this one.
 
 Once you hit the commit button, you’ll be directed to a pop-up window. You insert a message into the _Commit message_ pane briefly saying what you did in this current commit:
 
@@ -100,7 +100,7 @@ Say for some reason (QA, Policy want experimental analysis, several people need 
 
 If, though, things didn’t work out well for your civilisation, you would just load your game from before you went to war, and continue on independently to what you did before you went to war. 
 
-The same logic applies here. By creating a branch, you are allowing files to be edited, whilst keeping an original version of them to revert back to if you need or want to. Here’s a nice picture of what this looks like (where Master is the default) version:
+The same logic applies here. By creating a branch, you are allowing files to be edited, whilst keeping an original version of them to revert back to if you need or want to. Here’s a nice picture of what this looks like (where `Master` is the default) version:
 
 <img src = "images/06.png">
 
@@ -124,7 +124,7 @@ But say folks that you've been working on a different branch for a while, and no
 
 To do that, we have to venture outside the GUI _gasp_ into the land of the command line...
 
-> Here's be me; 'Dragons'
+> Here's be Dragons
 
 To enter such wild lands, *either* click on the Shell option in the GUI:
 
@@ -142,7 +142,9 @@ where 'x' is the branch you want to merge into your master one. Mine looks like 
 
 <img src = "images/12.png">
 
-One of the dangers of venturing out into the command line are the nefarious computer errors lurking, waiting to pounce at the first sign of weakness. Such a monster is the enmity-sounding `merge conflict`. This relates to a situation where a file in your new branch has content that that file in the master branch doesn't have; _and_ that file in the master branch has content that the new branch file doesn't. If this happens to you, [watch Youtube](https://www.youtube.com/watch?v=g8BRcB9NLp4), and it will save your day. 
+One of the dangers of venturing out into the command line are the nefarious computer errors lurking, waiting to pounce at the first sign of weakness. Such a monster is the enmity-sounding `merge conflict`. This relates to a situation where a file in your new branch has content that that file in the master branch doesn't have; _and_ that file in the master branch has content that the new branch file doesn't. If you've ever used a file sharing service like _Dropbox_, and have come across a `Sync Conflict` while using it, you will have experienced the same thing. Essentially, Git is confronted with two versions of the same file, and needs *your* help in deciding which one is the correct one. 
+
+If this happens to you, [watch Youtube](https://www.youtube.com/watch?v=g8BRcB9NLp4), and it will save your day. 
 
 Usefully, merged branches are also visualised in the History tab of the git GUI. You can then quickly see where and how changes were enacted in your code, and also get a quick sense of the various versions of your files. Plus, if nothing else, the branches are colourful:
 
@@ -156,7 +158,7 @@ Well, doing that for an hour adds about [seven hours onto your life](https://www
 
 In the case of running, putting yourself under a bit of hassle now leads to positive outcomes in the long-run. By putting the effort in and going for a run, you're going to garner a variety of long-term [mental](https://digest.bps.org.uk/2017/04/19/10-ways-that-running-changes-your-mind-and-brain/) and [physical](https://thepsychologist.bps.org.uk/volume-30/may-2017/minds-run-free) benefits. 
 
-It's the same thing we git. By putting yourself under a bit of hassle now to record what you do, and creating and managing branches when you need to add a major different feature to code, you are garnering a variety of long-term benfits like:
+It's the same thing we Git. By putting yourself under a bit of hassle now to record what you do, and creating and managing branches when you need to add a major different feature to code, you are garnering a variety of long-term benfits like:
 
  * creating a clear, auditable trail of how you created your code for QA, and for your own record;
  * improving knowledge management by documentating why you made changes in the commit messages; and,
@@ -170,7 +172,7 @@ If you want to learn more about Git, or want to venture further into command lin
 
  * For a tutorial on Git using the command line, check out Zach Waller's [stellar PowerPoint presentation](https://educationgovuk.sharepoint.com/sites/sarpi/g/WorkplaceDocuments/Forms/AllItems.aspx?RootFolder=%2Fsites%2Fsarpi%2Fg%2FWorkplaceDocuments%2FInducation%20learning%20and%20career%20development%2FCoffee%20and%20Coding%2F170816%5Fzach%5Fgit&FolderCTID=0x012000C61C1076C17C5547A6D6D8C2A27B5D97); 
  * DfE's *VSTS for Analysis* book has a [section on Git](https://dfe-analytical-services.github.io/vsts-for-analysis/version-control-using-git-the-basics.html); and,
- * The surpeme resource on Git is the [Pro Git](https://git-scm.com/book/en/v2) book. It is the best reeference resource out there, and should be consulted if you encounter problems beyond the scope of committing, branching, and merging. 
+ * The surpeme resource on Git is the [Pro Git](https://git-scm.com/book/en/v2) book. It is the best reference resource out there, and should be consulted if you encounter problems beyond the scope of committing, branching, and merging. 
 
 # Conclusion
 
