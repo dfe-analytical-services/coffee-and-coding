@@ -1,0 +1,424 @@
+---
+title: 'SQL and Excel to R: How to make the Jump'
+author: "David Sands"
+date: "18 November 2018"
+output:
+  html_document:
+    code_folding: show
+    df_print: paged
+    highlight: pygment
+    number_sections: yes
+    theme: cerulean
+    toc: yes
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE,
+                      warning = FALSE,
+                      cols.print = 8)
+```
+
+# Introduction
+
+In this document, I will show you to use R in your work by:
+
+* Importing SQL and Excel data into it; 
+* Manipulating said data when it's in R; and,
+* Creating tables and charts with that data.
+
+Using R for your work offers myriad benefits over the combination of SQL/Excel that you are currently used to:
+
+* It offers more advanced and bespoke capabilities than either Excel and SQL combined; 
+* it allows all work to be done in a single document (if using [an R Markdown document](https://matt-dray.github.io/knitting-club/)), instead of the use of several software;  and, 
+* with proper documentation and version control, it allows analysis to create more reproducible work than the combination of Excel and SQL. 
+
+To demonstrate, let's look at how things are usually done. Your typical analytical day may involve something like this:
+
+1. Connect to SQL
+2. Play around with SELECT queries to explore the data
+3. Copy and paste the data from SQL into Excel
+4. Send a combination of a word document and/or Excel file to your customers
+
+That's all well and good, but what could go wrong? 
+Oh well, you could forget to save the queries that you used in SQL. If someone new came along, they would have to redo the whole work to guess how to get the data you did.
+Upon pasting the raw data into Excel, you could edit that and lose the raw data you got from SQL, making your analysis harder to reproduce.
+If you only sent a word document of your analysis, and are asked for your source code or data, you would have to send two files to your customers instead of one. 
+
+*Wouldn't it be great if these problems fizzled away?*
+
+In this talk, I'll show you to fizzle them away. 
+
+## BUT, we need an R Project first
+
+Before we go any further, we need to get oragnised. Anytime you do analytical work that requires R code , you should create an [R project](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects). This just creates a folder in file explorer where you can house all documents related to the work you're doing. To do so, just click on _Project: (None)_, and then _New Project_ in the top right of RStudio:
+
+<img src="images/01.png" alt="Create R Project">
+
+An R Project also generates a Git repository in that folder, allowing you to version control the files in that folder. I *highly* recomend you to start using Git once you've got used to R. So if you like this talk, book me in for the sequel - `Gooey Git`.
+
+# Connecting R to SQL 
+
+To start moving your work from SQL/Excel to R, we'll replicate the first step of any piece of analytical work you do - connecting to SQL.
+A previous DfT Coffee & Coding talk [here](https://github.com/departmentfortransport/coffee-and-coding/tree/master/20181114_Connecting_R_to_SQL) went into great detail on how to do this. 
+But to quickly set it up, you just need to edit and run the following code:
+
+```{r connecting_to_sql}
+# Make sure these packages are installed. You can install them by calling: `install.packges("package_name_here")`
+library(DBI)
+library(odbc)
+
+# In this example I'm using a DfE database I can access. Change the 'server' and 'database' parameters to the SQL databases you can access in DfT. 
+conn1 <- dbConnect(odbc(), .connection_string = "driver={SQL Server}; server=3DCPRI-PDB16\\ACSQLS; database=KS5")
+```
+
+Call in the DBI and odbc packages. They allow connections to be made with SQL servers.
+
+Then open a connection between SQL and R. Copy the conn1 code above, but then change the 'server' argument to the Server name of your SQL log in (see the picture below), and then change 'database' to the database you usually connect to. 
+
+<img src="images/sql_login.png" alt="SQL_Login" width="400", height="300">
+
+(Also, if your Server name has a backslash in it, put another backslash beside it in the code. R treats a single backslash as an escape character, and will moan at you. Don't let it do that.)
+
+# Bringing SQL data into R
+
+Great stuff - we've successfully connected to SQL. How easy was that? Insanely easy. And this is a factum that has made some analysts worship R like an idol. Once you've got to grips with how the language works, everything is just so *easy and smooth*. 
+
+Now we need to bring the SQL data we work with into R. How are we going to do this?
+
+If you are going to be working with an entire table's data, your best bet is to use this:
+
+```{r example_of_dbReadTable}
+# Example of dbReadTable function from the DBI package. This reads an entire table from SQL into your R enviornment as a Data Frame
+results_2017 <- DBI::dbReadTable(conn1, Id(schema = "dbo", table = "KS5_England_Results_2017"))
+
+# Another way to read an entire table in is given below:
+# results_2017 <- tbl(conn1, dbplyr::in_schema(schema = "dbo", table = "KS5_England_Results_2017"))
+
+# Which method is quicker? The second is. In my run, dbReadTable took 1.01 seconds. While tbl took 0.45 seconds
+# In future I'll use tbl. But in this talk I feel dbReadTable is easier to explain. 
+# library(dbplyr)
+# library(dplyr)
+# library(tictoc) # On the clock, but the party don't stop, no
+# 
+# tictoc::tic()
+# results_2017_1 <- DBI::dbReadTable(conn1, Id(schema = "dbo", table = "KS5_England_Results_2017"))
+# tictoc::toc()
+# 
+# tictoc::tic()
+# results_2017_2 <- tbl(conn1, dbplyr::in_schema("dbo", "KS5_England_Results_2017"))
+# tictoc::toc()
+```
+
+In this example here, I am pulling in all the final KS5 performance data that appeared on the Gov.uk **Compare School Performance** website for KS5 for the 2016 to 2017 academic year. This data can be [downloaded here](https://www.compare-school-performance.service.gov.uk/download-data?currentstep=datatypes&regiontype=all&la=0&downloadYear=2016-2017&datatypes=ks5).
+
+If, instead, you only want to pull a subset of data through from SQL, then you want to use a dbGetQuery function. This emulates a SQL query in R, allowing you to query the data as if you were in SQL. Sneaky beaky like...
+
+Here's a few examples of such queries:
+
+```{r exampl_of_dbGetQuery}
+# Example of dbGetQuery function from the DBI package. This reads a select statement results from SQL into your R enviornment as a Data Frame. 
+results_2017_top_100 <- DBI::dbGetQuery(conn1, "SELECT TOP 100 * FROM dbo.KS5_England_Results_2017")
+
+# Get Query can handle complicated select statements and some table joins. 
+schools_in_yorkshire <- DBI::dbGetQuery(conn1, "SELECT COUNT(*), TOWN FROM dbo.KS5_England_Results_2017 WHERE REGION= '12' GROUP BY(TOWN)")
+```
+
+For our dogmatic listeners who get a kick from doing things by the book, take pleasure from R Studio's best practice website on [working with databases.](https://db.rstudio.com/) 
+
+# Bringing Excel data into R
+
+Now suppose that, instead of wanting to bring SQL data into R, you want to bring data contained in csv and Excel files into it. Thankfully, you will see below that that act is, again, so *easy and smooth*. 
+
+## csv data import
+
+In this example, we're working with data on the DerbyshireLA for the 2017/18 academic year. We have their KS4 final performance results in a csv, and have their KS4 destinations in an excel. 
+
+Importing the csv is wee buns:
+
+```{r csv-import}
+derby_ks4_data <- read.csv(file = "data/830_ks4final.csv")
+```
+
+Whereas, to import the Excel data, we should call the `readxl` package in:
+
+```{r excel-import}
+#install.packages("readxl")
+library(readxl)
+derby_ks4_pupdest <- readxl::read_excel(path = "data/830_ks4-pupdest.xlsx")
+```
+
+And that's it. 
+
+Also notice in both inputs that I set the location of the data into a 'data' folder. This is one of the boons of using R projects, as it allows you to create sub-folders within the main project folder to hold files of the same type for easy stroage. You can then set so-called _relative paths_ in your code, meaning that if someone else worked in your project, you can call in the same files as you as all the files are saved in folders _relative_ to the main project one, ramping up reproducibility. Do try it out folks.
+
+# Select Statements in R dplyr 
+
+We can now connect our R session to SQL databases and pull data in SQL into R. Now that the data is here, we can work with it as if we were still in SQL: without having to pass SQL commands in our GetQuery functions. We can select, filter, order by, group by, and join data to our hearts content. 
+
+How?
+
+[With dplyr.](https://dplyr.tidyverse.org/)
+
+You may have heard of this. It is the main data editing and selecting package in a suite of R packages called the [Tidyverse](https://www.tidyverse.org/). These packages are designed to make R work faster, more efficient, and easier. If you want to learn R properly, getting familiar with this packages will save you so much work. 
+
+Let's give an example of how a standard SQL statement can be replicated in dplyr commands. In this case, we're going to use KS5 results of schools in the Sheffield LA from the 2016/17 academic year:
+
+```{r sql_dplyr_compare}
+# Example of standard SQL Select statement
+sql_select <- DBI::dbGetQuery(conn1, "SELECT SCHNAME, TALLPUP_ACAD_1618, TALLPPE_ACAD_1618, TALLPPEGRD_ACAD_1618
+FROM dbo.KS5_England_Results_2017
+WHERE LEA = 373 -- We're selecting schools from Hilly Sheffield. Ey up!
+ORDER BY TALLPPE_ACAD_1618 DESC")
+
+# Now here's an example of how to translate the above statement into R commands
+# First, we import the dplyr package. This provides commands for the vast majority of data manipulation you need to do
+library(dplyr)
+
+# Second, pull in the data you'll use. This replaces the FROM statement.
+# Notice as well the below '%>%'? It is called a 'pipe'. It pipes (or chains) commands together so that they can be executed at the same time. To produce a pipe, type CTRL + SHIFT + M:
+dplyr_select <- results_2017 %>% 
+# Then replace the where statement with a filter statement:
+  filter(LEA == 373) %>% arrange(desc(TALLPPE_ACAD_1618)) %>% 
+# Then select the variables you want to pull through:
+  select(SCHNAME, TALLPUP_ACAD_1618, TALLPPE_ACAD_1618, TALLPPEGRD_ACAD_1618)
+
+# Do they match?
+sql_select == dplyr_select
+
+# Sweet! Let's print it then:
+dplyr_select
+
+# Ach, Damn NE values! Let's get rid of them:
+dplyr_select %>% filter(TALLPUP_ACAD_1618 != 'NE') 
+```
+
+## Benefits of moving from SQL to R
+
+We have so far conencted to SQL, pulled SQL data into R, and have replicated the standard SQL statements with dplyr commands. 
+
+This is brilliant. Because now the vast majority of work _you_ do in SQL is ready to be translated into R. 
+
+But, you may ask, why should *I* move my work from SQL into R? What's the point of doing stuff in R when I can do everything I need in SQL? Well like Saul, you need to let the scales fall from your eyes.
+
+Because if you move your work from SQL to R you can:
+
+* put your code, analysis, and text write-up all together like clingy couples in an [R Markdown document](https://rmarkdown.rstudio.com/articles_intro.html). The days of new starters wrecking themselves to replicate your work are over, 'cause you've already checked yo'self with this. For more information on how to get started with R Markdowns, either copy mine here, or check out this [Coffee and Coding-featured tutorial on it](https://matt-dray.github.io/knitting-club/), or make Tamsin's day and learn from her [R Markdown session](https://github.com/departmentfortransport/coffee-and-coding/tree/master/20180926_R_Markdown).
+* automate *your entire statistical publication* in a [Reporducible Analytical Pipeline](https://dataingovernment.blog.gov.uk/2017/03/27/reproducible-analytical-pipeline/). At the mere tap of a button, your publication can be outputted in minutes with new data, charts, and text.  
+* flaunt your data about in a swanky [R Shiny app](https://department-for-education.shinyapps.io/exclusion-statistics/). Allow the reems of your data to be given the visualisations and exploratory power they deserve. 
+
+I mean, it's just _SOOOOO GOOOD._
+
+## Common SQL commands translated into dplyr
+
+For ease of reference, below are common SQL commands and their translation into dplyr operations
+
+```{r top_n}
+#SQL TOP N: How do I select the top 20 rows from a dataset?
+sql_20 <- DBI::dbGetQuery(conn1, "SELECT TOP 20 *
+FROM dbo.KS5_England_Results_2017")
+
+#DPLYR TOP N: The top_n() function will return the top n rows from a data frame. Here we instruct it to return 20
+dpl_20 <- results_2017 %>% top_n(20)
+```
+
+```{r ordering_columns}
+#SQL ORDER: Example of SQL order by
+DBI::dbGetQuery(conn1, "SELECT SCHNAME, TALLPUP_ACAD_1618, TALLPPE_ACAD_1618, TALLPPEGRD_ACAD_1618
+FROM dbo.KS5_England_Results_2017
+WHERE LEA = 373 -- We're selecting schools from Hilly Sheffield. Ey up!
+ORDER BY TALLPPE_ACAD_1618 DESC")
+
+#DPLYR ORDER: In dplyr we use 'arrange'. The default is in ascending order. Usually we'd want it to be descending
+results_2017 %>% 
+  filter(LEA == 373) %>% 
+  arrange(desc(TALLPPE_ACAD_1618)) %>% 
+  select(SCHNAME, TALLPUP_ACAD_1618, TALLPPE_ACAD_1618, TALLPPEGRD_ACAD_1618)
+```
+
+```{r grouping_columns}
+#SQL and R GROUP BY: Group by is the same in SQL as it is in dplyr. So easy
+DBI::dbGetQuery(conn1, "SELECT COUNT(*), REGION
+FROM dbo.KS5_England_Results_2017
+GROUP BY REGION")
+
+results_2017 %>% 
+  group_by(REGION) %>% 
+  count()
+```
+
+```{r create_columns}
+#SQL CREATE COLUMN: Create a new column in SQL
+DBI::dbGetQuery(conn1, "SELECT CONCAT(LEA, ESTAB) 'LAESTAB'
+FROM dbo.KS5_England_Results_2017
+WHERE REGION = 12")
+
+#DPLYR CREATE COLUMN: Create a new column in dplyr using the 'mutate' function
+results_2017 %>% 
+  filter(REGION == 12) %>% 
+  mutate(LAESTAB = paste(LEA, ESTAB, sep = '')) %>% 
+  select(LAESTAB)
+```
+
+```{r joining_tables}
+#SQL JOIN TABLES: Join two tables in SQL. Here we're linking Sheffield score results with their Level 3 Value Added scores
+DBI::dbGetQuery(conn1, "SELECT ER.SCHNAME, ER.TALLPUP_ACAD_1618, ER.TALLPPE_ACAD_1618, ER.TALLPPEGRD_ACAD_1618, VA.VA_INS_ACAD
+FROM dbo.KS5_England_Results_2017 ER
+LEFT JOIN L3VA.A2017.ACVQ_REPORTS VA 
+ON ER.SCHNAME = VA.SCHNAME
+WHERE LEA = 373")
+
+#DPLYR JOIN TABLES: Join two tables in dplyr
+
+# We have to call data from the ACVQ_REPORTS table in
+conn2 <- dbConnect(odbc(), .connection_string = "driver={SQL Server}; server=3DCPRI-PDB16\\ACSQLS; database=L3VA")
+va_2017 <- DBI::dbReadTable(conn2, Id(schema = "A2017", table = "ACVQ_REPORTS"))
+
+# Now let's join
+results_2017 %>% 
+  filter(LEA == 373) %>% 
+  left_join(va_2017, by = "SCHNAME") %>% 
+  select(SCHNAME, TALLPUP_ACAD_1618, TALLPPE_ACAD_1618, TALLPPEGRD_ACAD_1618, VA_INS_ACAD)
+```
+
+```{r sql_dplyr_commands_table}
+library(kableExtra)
+
+knitr::kable(
+  data.frame(
+    SQL_Statements = c(
+      "Select Top 100 *",
+      "Order By Col A (DESC)",
+      "Group By Col A",
+      "Select Function(COL A, COL B) 'New Column Name'",
+      "From Table A
+      Left Join Table B
+      On A.Key = B.Key"
+    ),
+    DPLYR_Version = c(
+      "top_n(100)",
+      "arrange(desc(Col A))",
+      "group_by(Col A)",
+      "mutate(New Column Name = Function(Col A, Col B, etc))",
+      "left_join(Table 1, Table B, by = 'Key')"
+    )
+  )
+) %>% kable_styling()
+```
+
+# Replacing Excel uses in R
+
+Now that we've replaced your SQL stages in R, what becomes of Excel?
+
+Well, if you really like working with Excel - or feel the data is so complicated that it needs to go into Excel - then you can simply write the data you've generated in R to excel with the write.csv function. You can also write out the data sporadically during an analysis to keep an audit trail. 
+
+Even this is better than the previous method of generating data in SQL, and then manually copying it into Excel. By automating the process of creating a csv here, you're less likely to make a mistake during the sopy and paste, and can demonstrate to team members - and anyone who comes across your analysis - how you generated data. 
+
+```{r writing_data_to_excel}
+write.csv(dplyr_select, "results/sheffield_Schools.csv")
+```
+
+However, if you still stay in R at this stage to analyses and/or present the data, then you'll be onto a winner. Because whatever Excel can do, [R can do better.](https://www.youtube.com/watch?v=WO23WBji_Z0)
+
+## DT tables to replace Excel tables
+
+The usefulness of Excel is that it easily stores data for you to sort, filter, or search for. All three things can be done in a brilliant JavaScript library called [DataTables.](https://datatables.net/) These are interactive tables you can place on `Hyper Text Markup Langauge (HTML)` pages. HTML is the term applied to documents that can be viewed in web browsers. These include R Markdown files, Jupyter notebooks, and webpages. 
+
+With this, we can insert an interactive table of data onto our Markdown file. This allows users to sort, filter, and search for the data they need, just as if they were in Excel. 
+
+To embed this in our document, we need to call the [DT R package](https://rstudio.github.io/DT/), which provides a link to the DataTables library. We can also invite our customers to the party by providing CSV and PDF kick-outs of the data selected in a DT. This allows anyone viewing your markdown document to return a subset of data into Excel, from which they can use to their heart's content. 
+
+```{r DT_example}
+# install.packages("DT")
+library(DT)
+
+DT::datatable(
+  data = dplyr_select %>% filter(TALLPUP_ACAD_1618 != 'NE') %>% mutate(TALLPUP_ACAD_1618 = as.numeric(TALLPUP_ACAD_1618)) %>% 
+    mutate(TALLPPE_ACAD_1618 = as.numeric(TALLPPE_ACAD_1618)) %>% 
+    mutate(TALLPPEGRD_ACAD_1618 = as.factor(TALLPPEGRD_ACAD_1618)),  # data you want to display
+  filter = "top", # column filter boxes. As all these columns are character, they can only filter for strings. Change the data types to 
+  # either Factor or num to filter based on groups or numeric ranges respectively 
+  extensions = "Buttons",  # add the option of buttons to the table
+  rownames = T,
+  width = "100%",  # full width
+  options = list(
+    buttons = list(extend = "collection",
+      buttons = c("csv", "pdf", "excel", "copy")),  # download extension options
+    autoWidth = TRUE,  # column width consistent when making selections
+    dom = "Brtip" #  B in dom denotes the place where the buttons are to be inserted
+    )
+)
+```
+
+Lookin' good; isn't it?!
+
+## ggplot to replace Excel charts
+
+But say that, even after seeing this, you don't want to give up on Excel just yet. Why not? Well, because how are you going to so easily create graphs in R? Surely there can't be an effective way to visuliase data here? 
+
+[Au Contraire.](https://www.r-graph-gallery.com/portfolio/ggplot2-package/)
+
+R has the answer again with [ggplot2](https://ggplot2.tidyverse.org/), the Tidyverse's data visualisation package. 
+
+Say we want a histogram of the average grades schools achieved in their KS5 results. We would do this:
+
+```{r ggplot2-example}
+# install/packages("ggplot2"")
+library(ggplot2)
+
+# Format the data for visulisation
+plot_data <- dplyr_select %>% filter(TALLPUP_ACAD_1618 != 'NE') %>% mutate(TALLPUP_ACAD_1618 = as.numeric(TALLPUP_ACAD_1618)) %>% 
+    mutate(TALLPPE_ACAD_1618 = as.numeric(TALLPPE_ACAD_1618)) %>% 
+    mutate(TALLPPEGRD_ACAD_1618 = as.factor(TALLPPEGRD_ACAD_1618))
+
+# Plot a histogram
+ggplot2::ggplot(data = plot_data, mapping = aes(TALLPPEGRD_ACAD_1618)) + 
+  geom_histogram(stat = "count")
+
+# Plot a histogram with colour
+ggplot(data = plot_data, mapping = aes(TALLPPEGRD_ACAD_1618)) + 
+  geom_histogram(stat = "count", fill = "#FF9999")
+
+# Plot a histogram with a colour per each group of the grade variable
+ggplot(data = plot_data, mapping = aes(TALLPPEGRD_ACAD_1618, fill = TALLPPEGRD_ACAD_1618)) + 
+  geom_histogram(stat = "count")
+```
+
+What did we do here? We created created these charts by creating addng _layers_:
+
+ 1. We laid the first layer by specifying the data we're going to use. In this case, we used the results of Sheffield schools; 
+ 2. We added a second layer by specifying the variable(s) we want to visualise. Any variable(s) you want to visualise are given in the `aes` function, where your x and y variables go; and,
+ 3. We then added a third layer by specifying _how_ we wanted the data visualised. In this case, we used a plus '+' to add a histogram to the data and variable layers we already set. We are adding layers on top of each other.  
+ 
+And then for the third chart you saw there, we added an additional layer inbetween the 2nd and 3rd, where we said that the fill colour of the chart should be determined by the grouping of the Grade variable. 
+
+But only a single variable can go so far. So let's take an example from [Connor Quinn's](mailto:connor.quinn@education.gov.uk) ggplot tutorial showing visulisation of an x and y variable:
+
+```{r ggplot-two-variables}
+# Import the miles per gallon data saved in R
+data("mpg")
+
+# Visualise class and hwy with a boxplot 
+ggplot(data = mpg, mapping = aes(x = class, y = hwy, fill = class)) + 
+  geom_boxplot()
+
+# Visualise class and hwy with a boxplot AND a violin plot
+ggplot(data = mpg, mapping = aes(x = class, y = hwy, fill = class)) + 
+  geom_boxplot() + 
+  geom_violin()
+  
+# Visualise class and hwy with a boxplot AND spread the datapoints across the plane of the class factor
+ggplot(data = mpg, mapping = aes(x = class, y = hwy, fill = class)) + 
+  geom_boxplot() + 
+  geom_jitter()
+```
+
+Which leaves me to say...Viola! You now have the best capabilities of Excel embedded in your file. You have now replaced the capabilities of not one, but two analytical software packages into one. Feels good doesn't it?
+
+# Summary
+
+I have shown how to connect to SQL via R, import csv and excel data into R, replace SQL statements in R, apresented Excel-style data in R, and demonstrated R's visualisation capabilities, all in an R Markdown file. 
+
+With this, you can make your analytical work easier, faster, more efficient, more reproducible, and capable of the finest analytical capabilities R has access to. 
+
