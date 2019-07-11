@@ -36,7 +36,7 @@ If you get stuck, just read this [guide.](https://help.github.com/en/articles/co
 
 ## Creating a PAT <a class="anchor" id = "tag3"></a>
 
-With 2FA set up, you now need to create a `Personal Access Token`(PTA) to send us files and folders. 
+With 2FA set up, you now need to create a `Personal Access Token`(PAT) to send us files and folders. 
 
 To create, follow these steps:
 
