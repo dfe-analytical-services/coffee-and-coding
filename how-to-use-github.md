@@ -3,7 +3,7 @@
 ### _David Sands_
 ### _2019/07/11_
 
-Github is an online repository(repo) where programmers^[which we believe is _anyone_ who writes code] place their code. Programmers can then easily share their code with the world, and allow other programmers to take their code and adapt it. It is an example of the [open source software movement](https://en.wikipedia.org/wiki/Open-source-software_movement), which is `software in which the source code is freely available for others to view, amend, and adapt`^[http://www.infotoday.com/it/oct01/poynder.htm]. 
+Github is an online repository(repo) where programmers - which we believe is _anyone_ who writes code - place their code. Programmers can then easily share their code with the world, and allow other programmers to take their code and adapt it. It is an example of the [open source software movement](https://en.wikipedia.org/wiki/Open-source-software_movement), which is `software in which the source code is freely available for others to view, amend, and adapt`[SOURCE](http://www.infotoday.com/it/oct01/poynder.htm). 
 
 At DfE's Coffee and Coding, we are moving to host non-Official Sensitive materials on Github. To help programmers upload their materials to our repo, we have prepared this how-to guide on how **you** can contribute to our repo. 
 
@@ -56,27 +56,27 @@ This step assumes that you have `Git` installed on your machine. If you don't, a
 
 First, go to [our repo's homepage](https://github.com/dfe-analytical-services/coffee-and-coding), click _Clone or download_, and copy the url you see:
 
-<img src= "images/01.png">
+![](images/01.png?raw=true)
 
 Now, open RStudio, click _Project: (None)_, and then click _New Project_
 
-<img src= "images/02.png">
+![](images/02.png?raw=true)
 
 then select _Version Control_ 
 
-<img src= "images/03.png">
+![](images/03.png?raw=true)
 
 then _Git_. 
 
 Finally, paste the url into the _Repository URL_ box 
 
-<img src= "images/04.png">
+![](images/04.png?raw=true)
 
 click _Create Project_... and wait. Hopefully with a nice cup of tea. 
 
 Once the cloning is finished, you should see the files on our Github repo in your RStudio Files pane 
 
-<img src= "images/05.png">
+![](images/05.png?raw=true)
 
 ## Pushing your changes to the repo <a class="anchor" id = "tag5"></a>
 
@@ -84,7 +84,7 @@ Now that you have downloaded/`Cloned` our repo onto your machine, you can contri
 
 To do this, just add as many files as you want to your R project folder. Then when you have finished adding files, commit them in the Git pane. 
 
-<img src= "images/06.png">
+![](images/06.png?raw=true)
 
 After committing, you may see the message that _Your branch is ahead of 'irigin/master'_. This signifies that the commit history on your machine is different to the one on our Github repo. You want to see this, as it shows that you have added files on top of ours. 
 
@@ -92,11 +92,11 @@ But now you want to let us know you have added these files, so we can then place
 
 Then wait, and when prompted, enter your Github username
 
-<img src= "images/07.png">
+![](images/07.png?raw=true)
 
 wait a bit more, and then when you are prompted for your github password, enter the PTA you [generated earlier](#tag3). You enter this because we're using 2FA, where your PTA takes the place of your password when pushing content to us.  
 
-<img src= "images/08.png">
+![](images/08.png?raw=true)
 
 And if all that goes well, we will see the files you have contributed in the _Pull requests_ pane, where we can approve them, or suggest changes. 
 
