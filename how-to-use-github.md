@@ -56,27 +56,27 @@ This step assumes that you have `Git` installed on your machine. If you don't, a
 
 First, go to [our repo's homepage](https://github.com/dfe-analytical-services/coffee-and-coding), click _Clone or download_, and copy the url you see:
 
-![](images/01.png?raw=true)
+![Figure1](https://github.com/dfe-analytical-services/coffee-and-coding/blob/master/images/01.PNG)
 
 Now, open RStudio, click _Project: (None)_, and then click _New Project_
 
-![](images/02.png?raw=true)
+![Figure2](https://github.com/dfe-analytical-services/coffee-and-coding/blob/master/images/02.PNG)
 
 then select _Version Control_ 
 
-![](images/03.png?raw=true)
+![Figure3](https://github.com/dfe-analytical-services/coffee-and-coding/blob/master/images/03.PNG)
 
 then _Git_. 
 
 Finally, paste the url into the _Repository URL_ box 
 
-![](images/04.png?raw=true)
+![Figure4](https://github.com/dfe-analytical-services/coffee-and-coding/blob/master/images/04.PNG)
 
 click _Create Project_... and wait. Hopefully with a nice cup of tea. 
 
 Once the cloning is finished, you should see the files on our Github repo in your RStudio Files pane 
 
-![](images/05.png?raw=true)
+![Figure5](https://github.com/dfe-analytical-services/coffee-and-coding/blob/master/images/05.PNG)
 
 ## Pushing your changes to the repo <a class="anchor" id = "tag5"></a>
 
@@ -84,7 +84,7 @@ Now that you have downloaded/`Cloned` our repo onto your machine, you can contri
 
 To do this, just add as many files as you want to your R project folder. Then when you have finished adding files, commit them in the Git pane. 
 
-![](images/06.png?raw=true)
+![Figure6](https://github.com/dfe-analytical-services/coffee-and-coding/blob/master/images/06.PNG)
 
 After committing, you may see the message that _Your branch is ahead of 'irigin/master'_. This signifies that the commit history on your machine is different to the one on our Github repo. You want to see this, as it shows that you have added files on top of ours. 
 
@@ -92,11 +92,11 @@ But now you want to let us know you have added these files, so we can then place
 
 Then wait, and when prompted, enter your Github username
 
-![](images/07.png?raw=true)
+![Figure7](https://github.com/dfe-analytical-services/coffee-and-coding/blob/master/images/07.PNG)
 
 wait a bit more, and then when you are prompted for your github password, enter the PTA you [generated earlier](#tag3). You enter this because we're using 2FA, where your PTA takes the place of your password when pushing content to us.  
 
-![](images/08.png?raw=true)
+![Figure8](https://github.com/dfe-analytical-services/coffee-and-coding/blob/master/images/08.PNG)
 
 And if all that goes well, we will see the files you have contributed in the _Pull requests_ pane, where we can approve them, or suggest changes. 
 
