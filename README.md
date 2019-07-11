@@ -13,7 +13,10 @@ Please contact coffee.coding@education.gov.uk if you:
   * or would like to volunteer to lead a session.
 
 ### Contributing 
-Emulating the [Department for Transport's (DfT)](https://github.com/departmentfortransport/coffee-and-coding) sensible approach - and to induce standardisation across the different Coffee and Coding programs across UK Government Departments - folders should adhere to the following conventions:
+
+If you would like to contribute to our repo, please read the [How To Guide](https://github.com/dfe-analytical-services/coffee-and-coding/blob/master/how-to-use-github.md) we have created. 
+
+Emulating the [Department for Transport's (DfT)](https://github.com/departmentfortransport/coffee-and-coding) sensible approach - and to induce standardisation across the different Coffee and Coding programs across UK Government Departments - your folders should adhere to the following conventions:
 
 * `YYYYMMDD_Topic_Name`
 * All folders should contain a `README.md` with notes or a brief explanation about the session of that folder
