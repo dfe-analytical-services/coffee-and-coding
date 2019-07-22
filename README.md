@@ -50,5 +50,6 @@ See below for details of past and upcoming sessions.
 | :-------------- | 
 [Department for Transport](https://github.com/departmentfortransport/coffee-and-coding)
 [Office for National Statistics](https://github.com/datasciencecampus/coffee-and-coding)
+[Ministry of Justice](https://github.com/moj-analytical-services/coffee-and-coding-public)
 
 More details on the C & C movement across the Civil Service of the United Kingdom can be found on `The Machine's` [RAP website](https://ukgovdatascience.github.io/rap-website/resource-coffee-and-coding.html).
