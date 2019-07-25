@@ -20,7 +20,7 @@ At DfE's Coffee and Coding, we are moving to host non-Official Sensitive materia
 
 Go to the [Github homepage](https://github.com), and click on _Sign up_. Then enter your details. 
 
-When creating your password, use a password manager like [KeePass](https://keepass.info/) or [MacPass](https://macpassapp.org/) to make it. These create and hold all the passwords of your web accounts in one, safe, encrypted place. This will also be useful when you turn 2FA on.
+When creating your password, use a password manager like [Bitwarden](https://bitwarden.com/) or [KeePass](https://keepass.info/) to make it. These create and hold all the passwords of your web accounts in one, safe, encrypted place. This will also be useful when you turn 2FA on.
 
 ## Turning 2FA on <a class="anchor" id = "tag2"></a>
 
@@ -100,11 +100,11 @@ wait a bit more, and then when you are prompted for your github password, enter 
 
 And if all that goes well, we will see the files you have contributed in the _Pull requests_ pane, where we can approve them, or suggest changes. 
 
-## Uploading html, word, excel, or powerpoint files? Read this <a class="anchor" id = "tag6"></a>
+## Uploading word, excel, rendered html, or powerpoint files? Read this <a class="anchor" id = "tag6"></a>
 
 Github was designed to host code. Hosting your python, R, sql, and markdown files on it thus hold no problem. Peculiarly, pdfs are also easily added. 
 
-But github - like git - **hates** non-binary files like html, word, excel, powerpoint etc. Essentially, your files will be uploaded, but it will be very hard to view the raw code that creates those files on github. To make life easier for your viewers, place the url of your html or microsoft files into the box at [DownGit,](https://minhaskamal.github.io/DownGit/#/home) and place the Download Link you create in your `README.md` file. This will create a download link for the various html, word, excel, or powerpoint presentations that you would like to upload. 
+But github - like git - **hates** non-binary files like rendered html, word, excel, powerpoint etc. Essentially, your files will be uploaded, but it will be very hard to view the raw code that creates those files on github. To make life easier for your viewers, place the url of your html or microsoft files into the box at [DownGit,](https://minhaskamal.github.io/DownGit/#/home) and place the Download Link you create in your `README.md` file. This will create a download link for the various html, word, excel, or powerpoint presentations that you would like to upload. 
 
 
 
