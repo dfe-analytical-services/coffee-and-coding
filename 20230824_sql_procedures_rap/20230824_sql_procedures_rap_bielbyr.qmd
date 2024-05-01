@@ -1,7 +1,9 @@
 ---
 title: "Returns to FE: SQL procedures, R and RAP"
 author: "Rich Bielby"
-format: revealjs
+format: 
+  revealjs:
+    theme: moon
 ---
 
 ## Overview
