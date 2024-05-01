@@ -71,8 +71,8 @@ Guided by RAP and good coding practices, including clear documentation
 ::: {.column width="19%"}
 Functionality should be focused on DfE needs
 :::
-<!-- ::: {.column width="20%"} -->
-Analysts at large can (and be encouraged to) contribute!
+::: {.column width="20%"}
+Analysts at large can contribute!
 :::
 :::::
 ::::
