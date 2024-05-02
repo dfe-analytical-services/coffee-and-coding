@@ -20,7 +20,7 @@ format:
 
 :::: {.columns}
 ::: {.column width="70%"}
-The Statistics Devlopment Team are developing packages for use in R to support the analytical community in having common useful functions readily available for their work. 
+The Statistics Development Team are developing packages for use in R to support the analytical community in having common useful functions readily available for their work. 
 
 They're published on the [DfE Analytical Services GitHub page](https://github.com/dfe-analytical-services) and are ready to use.
 
@@ -102,7 +102,10 @@ I'm going to switch to some live coding now to show:
 
 - How to install dfeR
   - `renv::install("dfe-analytical-services/dfeR")`
-- Some basic functionality that's currently available
+- Some basic functionality that's currently available:
+  - `comma_sep()`
+  - `round_five_up()`
+  - `forma_ay()` / `forma_fy()`
 
 
 ## [dfeshiny](https://github.com/dfe-analytical-services/dfeshiny)
@@ -170,7 +173,9 @@ Don't duplicate functionality found in dfeR, shinyGovstyle, etc
 And now I'll switch to some live coding to show:
 
 - How to install dfeshiny
-- And again, some of the functionality that's currently available
+  - `renv::install("dfe-analytical-services/dfeshiny")`
+- And again, some of the functionality that's currently available:
+  - `cookie_banner_ui()` / `cookie_banner_server()` / `dfe_cookie_script()`
 
 ## How to contribute
 
@@ -184,6 +189,9 @@ We're keen to get engagement from both the statistics community and the wider an
 
 - Or if you have existing code or would like to write code that you think would be useful to either package, get in touch with us at [statistics.develoment@education.gov.uk](mailto:statistics.development@education.gov.uk)
   - And see our [contributing guide on GitHub pages](https://dfe-analytical-services.github.io/dfeR/CONTRIBUTING.html)
+
+And finally, this slide pack is available on the Coffee and Coding GitHub site:
+  - [https://github.com/dfe-analytical-services/coffee-and-coding](https://github.com/dfe-analytical-services/coffee-and-coding)
   
 :::
 ::: {.column width="38%"}

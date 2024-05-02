@@ -344,7 +344,7 @@ Rich Bielby, Statistics Development Team
 <h2>The DfE R packages</h2>
 <div class="columns">
 <div class="column" style="width:70%;">
-<p>The Statistics Devlopment Team are developing packages for use in R to support the analytical community in having common useful functions readily available for their work.</p>
+<p>The Statistics Development Team are developing packages for use in R to support the analytical community in having common useful functions readily available for their work.</p>
 <p>They’re published on the <a href="https://github.com/dfe-analytical-services">DfE Analytical Services GitHub page</a> and are ready to use.</p>
 <div class="columns">
 <div class="column" style="width:48%;">
@@ -431,7 +431,12 @@ Rich Bielby, Statistics Development Team
 <ul>
 <li><code>renv::install("dfe-analytical-services/dfeR")</code></li>
 </ul></li>
-<li>Some basic functionality that’s currently available</li>
+<li>Some basic functionality that’s currently available:
+<ul>
+<li><code>comma_sep()</code></li>
+<li><code>round_five_up()</code></li>
+<li><code>forma_ay()</code> / <code>forma_fy()</code></li>
+</ul></li>
 </ul>
 </section>
 <section id="dfeshiny" class="slide level2">
@@ -493,8 +498,14 @@ Rich Bielby, Statistics Development Team
 <h2>Demo of dfeshiny</h2>
 <p>And now I’ll switch to some live coding to show:</p>
 <ul>
-<li>How to install dfeshiny</li>
-<li>And again, some of the functionality that’s currently available</li>
+<li>How to install dfeshiny
+<ul>
+<li><code>renv::install("dfe-analytical-services/dfeshiny")</code></li>
+</ul></li>
+<li>And again, some of the functionality that’s currently available:
+<ul>
+<li><code>cookie_banner_ui()</code> / <code>cookie_banner_server()</code> / <code>dfe_cookie_script()</code></li>
+</ul></li>
 </ul>
 </section>
 <section id="how-to-contribute" class="slide level2">
@@ -512,6 +523,7 @@ Rich Bielby, Statistics Development Team
 <li>And see our <a href="https://dfe-analytical-services.github.io/dfeR/CONTRIBUTING.html">contributing guide on GitHub pages</a></li>
 </ul></li>
 </ul>
+<p>And finally, this slide pack is available on the Coffee and Coding GitHub site: - <a href="https://github.com/dfe-analytical-services/coffee-and-coding">https://github.com/dfe-analytical-services/coffee-and-coding</a></p>
 </div><div class="column" style="width:38%;">
 <div class="quarto-figure quarto-figure-right">
 <figure>
