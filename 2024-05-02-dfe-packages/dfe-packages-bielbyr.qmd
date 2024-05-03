@@ -1,0 +1,203 @@
+---
+title: "DfE R packages - dfeR and dfeshiny"
+title-slide-attributes:
+  data-background-position: top
+  data-background-image: title-screen-package-logos.png
+  data-background-size: contain
+  data-background-opacity: "1"
+subtitle: "DfE Coffee and Coding"
+author: "Rich Bielby, Statistics Development Team"
+institute: Department for Education
+format:
+  revealjs: 
+    theme: [dark, custom.scss]
+    width: 120%
+    height: 120%
+    logo: DfE_logo_landscape.png
+---
+
+## The DfE R packages
+
+:::: {.columns}
+::: {.column width="70%"}
+The Statistics Development Team are developing packages for use in R to support the analytical community in having common useful functions readily available for their work. 
+
+They're published on the [DfE Analytical Services GitHub page](https://github.com/dfe-analytical-services) and are ready to use.
+
+:::: {.columns}
+::: {.column width="48%"}
+[![](dfer-logo.png){height="7.2em"}](https://github.com/dfe-analytical-services/dfeR)
+:::
+::: {.column width="48%"}
+[![](dfeshiny-logo.png){height="7.2em"}](https://github.com/dfe-analytical-services/dfeshiny)
+:::
+::::
+In this coffee and coding, I'll give a brief introduction to what the scope of these packages is, how to install them, demo some of their functionality and tell you how you can help!
+
+:::
+::: {.column width="30%"}
+[![](dfe-analytical-services.png){fig-align="right"}](https://github.com/dfe-analytical-services)
+:::
+::::
+
+
+## [dfeR](https://github.com/dfe-analytical-services/dfeR)
+
+:::: {.columns}
+::: {.column width=20%}
+[![](dfer-logo.png){height="7.2em"}](https://github.com/dfe-analytical-services/dfeR)
+:::
+::: {.column width=80%}
+
+### Succinct functions that saves coding effort and make analysts lives easier!
+
+dfeR should provide simple code to make it easier for analysts to work effectively and consistently.
+:::
+::::
+
+### Principles
+
+:::: {.columns}
+::::: {style="background-color: #2073BC; padding: 10px; border: solid; border-color: #12436D"}
+::: {.column width="20%"}
+Keep functions small and simple
+:::
+::: {.column width="19%"}
+Functions are generic and widely applicable
+:::
+::: {.column width="20%"}
+Guided by RAP and good coding practices, including clear documentation
+:::
+::: {.column width="19%"}
+Functionality should be focused on DfE needs
+:::
+::: {.column width="20%"}
+Analysts at large can contribute!
+:::
+:::::
+::::
+
+### Scope
+
+:::: {.columns}
+::::: {style="background-color: #2073BC; padding: 10px; border: solid; border-color: #12436D"}
+::: {.column width=25%}
+Generally useful code snippets bundled into functions
+:::
+::: {.column width=24%}
+Simplifying connections to data sources
+:::
+::: {.column width=24%}
+Common QA functions useful for Rmarkdown / Quarto reports
+:::
+::: {.column width=25%}
+Don't duplicate functionality found in dfeshiny, tidyverse, etc 
+:::
+:::::
+::::
+
+## Demo of dfeR
+
+I'm going to switch to some live coding now to show:
+
+- How to install dfeR
+  - `renv::install("dfe-analytical-services/dfeR")`
+- Some basic functionality that's currently available:
+  - `comma_sep()`
+  - `round_five_up()`
+  - `forma_ay()` / `forma_fy()`
+
+
+## [dfeshiny](https://github.com/dfe-analytical-services/dfeshiny)
+
+:::: {.columns}
+::: {.column width=20%}
+[![](dfeshiny-logo.png){height="7.2em"}](https://github.com/dfe-analytical-services/dfeshiny)
+:::
+::: {.column width=80%}
+
+### Foster efficient creation of high quality official DfE dashboards
+
+dfeshiny should support analysts in developing official DfE dasboards and help 
+them meet the necessary standards required of public facing government services.
+
+:::
+::::
+
+### Principles
+
+:::: {.columns}
+::::: {style="background-color: #2073BC; padding: 10px; border: solid; border-color: #12436D"}
+::: {.column width="20%"}
+Develop processes that are intuitive to both implement and maintain
+:::
+::: {.column width="19%"}
+Keep functionality generic and widely applicable across DfE dashboards
+:::
+::: {.column width="20%"}
+Guided by RAP and good coding practices, including clear documentation
+:::
+::: {.column width="19%"}
+Functionality should be focused on DfE needs
+:::
+::: {.column width="20%"}
+Analysts at large can contribute!
+:::
+:::::
+::::
+
+### Scope
+
+:::: {.columns}
+::::: {style="background-color: #2073BC; padding: 10px; border: solid; border-color: #12436D"}
+::: {.column width=20%}
+Suite of components to simplify creating a DfE dashboard
+:::
+::: {.column width=19%}
+Provide standard scripting around analytics, cookie consent
+:::
+::: {.column width=20%}
+Create automated workflows for deployment and testing of dashboards
+:::
+::: {.column width=19%}
+Scaffold challenging tasks, e.g. interactive charts, alternative text and tables, etc
+:::
+::: {.column width=20%}
+Don't duplicate functionality found in dfeR, shinyGovstyle, etc
+:::
+:::::
+::::
+
+## Demo of dfeshiny
+
+And now I'll switch to some live coding to show:
+
+- How to install dfeshiny
+  - `renv::install("dfe-analytical-services/dfeshiny")`
+- And again, some of the functionality that's currently available:
+  - `cookie_banner_ui()` / `cookie_banner_server()` / `dfe_cookie_script()`
+
+## How to contribute
+
+:::: {.columns}
+::: {.column width="62%"}
+We're keen to get engagement from both the statistics community and the wider analytical community on developing these packages so they better meet people's needs. And you don't have to be a proficient coder to contribute, we're keen for the following input:
+
+- Ideas on what to include in either package (you don't need to know how to code up the solution, we're happy with suggestions and we can do the rest).
+
+  - Contribute ideas via the issue logs on GitHub for [dfeR](https://github.com/dfe-analytical-services/dfeR/issues) and [dfeshiny](https://github.com/dfe-analytical-services/dfeshiny/issues)
+
+- Or if you have existing code or would like to write code that you think would be useful to either package, get in touch with us at [statistics.develoment@education.gov.uk](mailto:statistics.development@education.gov.uk)
+  - And see our [contributing guide on GitHub pages](https://dfe-analytical-services.github.io/dfeR/CONTRIBUTING.html)
+
+And finally, this slide pack is available on the Coffee and Coding GitHub site:
+  - [https://github.com/dfe-analytical-services/coffee-and-coding](https://github.com/dfe-analytical-services/coffee-and-coding)
+  
+:::
+::: {.column width="38%"}
+[![](dfer-issues-log.png){fig-align="right"}](https://github.com/dfe-analytical-services/dfeR/issues)
+
+[![](dfeshiny-issues-log.png){fig-align="right"}](https://github.com/dfe-analytical-services/dfeshiny/issues)
+
+:::
+::::
