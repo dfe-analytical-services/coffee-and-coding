@@ -385,6 +385,32 @@
       margin-right: 0; 
     }
   </style>
+  <script src="bslib-bielbyr_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+  <script src="bslib-bielbyr_files/libs/plotly-binding-4.10.4/plotly.js"></script>
+
+  <script src="bslib-bielbyr_files/libs/typedarray-0.1/typedarray.min.js"></script>
+
+  <script src="bslib-bielbyr_files/libs/jquery-3.5.1/jquery.min.js"></script>
+
+  <link href="bslib-bielbyr_files/libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+
+  <script src="bslib-bielbyr_files/libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+
+  <link href="bslib-bielbyr_files/libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+
+  <script src="bslib-bielbyr_files/libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+  <link href="bslib-bielbyr_files/libs/htmltools-fill-0.5.7/fill.css" rel="stylesheet">
+
+  <script src="bslib-bielbyr_files/libs/bslib-component-js-0.6.1/components.min.js"></script>
+
+  <script src="bslib-bielbyr_files/libs/bslib-component-js-0.6.1/web-components.min.js" type="module"></script>
+
+  <link href="bslib-bielbyr_files/libs/bslib-component-css-0.6.1/components.css" rel="stylesheet">
+
+  <script src="bslib-bielbyr_files/libs/bslib-tag-require-0.6.1/tag-require.js"></script>
+
 </head>
 <body class="quarto-dark">
   <div class="reveal">
@@ -618,6 +644,100 @@ Browse...
 <figure>
 <p><a href="https://rstudio.github.io/bslib/index.html"><img data-src="images/bslib-card-2.png" class="quarto-figure quarto-figure-center"></a></p>
 </figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="cards-in-bslib" class="slide level2">
+<h2>Cards in bslib</h2>
+<div class="columns">
+<div class="column" style="width:36%;">
+<p>Cards are a really useful way to help individual content stand-out and support all sorts of things like captions and inline sidebars.</p>
+</div><div class="column" style="width:64%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>bslib<span class="sc">::</span><span class="fu">card</span>(</span>
+<span id="cb7-2"><a href=""></a>  bslib<span class="sc">::</span><span class="fu">card_header</span>(</span>
+<span id="cb7-3"><a href=""></a>    <span class="st">"A car's economy is inversely proportional to its weight."</span></span>
+<span id="cb7-4"><a href=""></a>    ),</span>
+<span id="cb7-5"><a href=""></a>  bslib<span class="sc">::</span><span class="fu">card_body</span>(example_plot_a),</span>
+<span id="cb7-6"><a href=""></a>  bslib<span class="sc">::</span><span class="fu">card_footer</span>(</span>
+<span id="cb7-7"><a href=""></a>    <span class="st">"The plot shows economy versus weight for a set of cars provided by the </span></span>
+<span id="cb7-8"><a href=""></a><span class="st">    mtcars data set."</span></span>
+<span id="cb7-9"><a href=""></a>    )</span>
+<span id="cb7-10"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="card bslib-card bslib-mb-spacing html-fill-item html-fill-container" data-bslib-card-init="" data-require-bs-caller="card()" data-require-bs-version="5">
+<div class="card-header">A car's economy is inversely proportional to its weight.</div>
+<div class="card-body bslib-gap-spacing html-fill-item html-fill-container" style="margin-top:auto;margin-bottom:auto;flex:1 1 auto;">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-640307d1151d01743915" style="width:100%;height:400px;"></div>
+<script type="application/json" data-for="htmlwidget-640307d1151d01743915">{"x":{"data":[{"x":[2.6200000000000001,2.875,2.3199999999999998,3.2149999999999999,3.4399999999999999,3.46,3.5699999999999998,3.1899999999999999,3.1499999999999999,3.4399999999999999,3.4399999999999999,4.0700000000000003,3.73,3.7799999999999998,5.25,5.4240000000000004,5.3449999999999998,2.2000000000000002,1.615,1.835,2.4649999999999999,3.52,3.4350000000000001,3.8399999999999999,3.8450000000000002,1.9350000000000001,2.1400000000000001,1.5129999999999999,3.1699999999999999,2.77,3.5699999999999998,2.7799999999999998],"y":[21,21,22.800000000000001,21.399999999999999,18.699999999999999,18.100000000000001,14.300000000000001,24.399999999999999,22.800000000000001,19.199999999999999,17.800000000000001,16.399999999999999,17.300000000000001,15.199999999999999,10.4,10.4,14.699999999999999,32.399999999999999,30.399999999999999,33.899999999999999,21.5,15.5,15.199999999999999,13.300000000000001,19.199999999999999,27.300000000000001,26,30.399999999999999,15.800000000000001,19.699999999999999,15,21.399999999999999],"text":["Weight: 2.620<br />MPG: 21.0","Weight: 2.875<br />MPG: 21.0","Weight: 2.320<br />MPG: 22.8","Weight: 3.215<br />MPG: 21.4","Weight: 3.440<br />MPG: 18.7","Weight: 3.460<br />MPG: 18.1","Weight: 3.570<br />MPG: 14.3","Weight: 3.190<br />MPG: 24.4","Weight: 3.150<br />MPG: 22.8","Weight: 3.440<br />MPG: 19.2","Weight: 3.440<br />MPG: 17.8","Weight: 4.070<br />MPG: 16.4","Weight: 3.730<br />MPG: 17.3","Weight: 3.780<br />MPG: 15.2","Weight: 5.250<br />MPG: 10.4","Weight: 5.424<br />MPG: 10.4","Weight: 5.345<br />MPG: 14.7","Weight: 2.200<br />MPG: 32.4","Weight: 1.615<br />MPG: 30.4","Weight: 1.835<br />MPG: 33.9","Weight: 2.465<br />MPG: 21.5","Weight: 3.520<br />MPG: 15.5","Weight: 3.435<br />MPG: 15.2","Weight: 3.840<br />MPG: 13.3","Weight: 3.845<br />MPG: 19.2","Weight: 1.935<br />MPG: 27.3","Weight: 2.140<br />MPG: 26.0","Weight: 1.513<br />MPG: 30.4","Weight: 3.170<br />MPG: 15.8","Weight: 2.770<br />MPG: 19.7","Weight: 3.570<br />MPG: 15.0","Weight: 2.780<br />MPG: 21.4"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,0,0,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":30.611872146118724,"r":7.3059360730593621,"b":58.115400581154006,"l":50.809464508094642},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[1.3174499999999998,5.6195500000000003],"tickmode":"array","ticktext":["2","3","4","5"],"tickvals":[2,3,4,5],"categoryorder":"array","categoryarray":["2","3","4","5"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":18.596928185969279},"tickangle":-0,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.66417600664176002,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"<b> Weight <\/b>","font":{"color":"rgba(0,0,0,1)","family":"","size":21.253632212536321}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[9.2249999999999996,35.074999999999996],"tickmode":"array","ticktext":["10","15","20","25","30","35"],"tickvals":[10,15,20,25,30,35],"categoryorder":"array","categoryarray":["10","15","20","25","30","35"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":18.596928185969279},"tickangle":-0,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.66417600664176002,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"x","title":{"text":"<b> MPG <\/b>","font":{"color":"rgba(0,0,0,1)","family":"","size":21.253632212536321}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.8897637795275593,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"4d8449ab3991":{"x":{},"y":{},"type":"scatter"}},"cur_data":"4d8449ab3991","visdat":{"4d8449ab3991":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div class="card-footer">The plot shows economy versus weight for a set of cars provided by the 
+    mtcars data set.</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="valueboxes-in-bslib" class="slide level2">
+<h2>Valueboxes in bslib</h2>
+<div class="columns">
+<div class="column" style="width:36%;">
+<p>Quite a few of our dashboards use <code>shinydashboard</code>, but will hopefully have noticed a warning message saying it’s no longer maintained (it hasn’t been updated for 3 years now). One of the main reasons analysts use <code>shinydashboard</code> is for <strong>valueboxes</strong> and <code>bslib</code> provides an up to date alternative to use instead.</p>
+</div><div class="column" style="width:64%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="fu">layout_columns</span>(</span>
+<span id="cb8-2"><a href=""></a>  bslib<span class="sc">::</span><span class="fu">value_box</span>(</span>
+<span id="cb8-3"><a href=""></a>    <span class="at">title =</span> <span class="st">"1st value"</span>,</span>
+<span id="cb8-4"><a href=""></a>    <span class="at">value =</span> <span class="st">"123"</span>,</span>
+<span id="cb8-5"><a href=""></a>    <span class="at">showcase =</span> bsicons<span class="sc">::</span><span class="fu">bs_icon</span>(<span class="st">"bar-chart"</span>),</span>
+<span id="cb8-6"><a href=""></a>    <span class="fu">p</span>(<span class="st">"The 1st detail"</span>),</span>
+<span id="cb8-7"><a href=""></a>    <span class="at">theme =</span> <span class="st">'orange'</span></span>
+<span id="cb8-8"><a href=""></a>  ),</span>
+<span id="cb8-9"><a href=""></a>  bslib<span class="sc">::</span><span class="fu">value_box</span>(</span>
+<span id="cb8-10"><a href=""></a>    <span class="at">title =</span> <span class="st">"2nd value"</span>,</span>
+<span id="cb8-11"><a href=""></a>    <span class="at">value =</span> <span class="st">"234.234"</span>,</span>
+<span id="cb8-12"><a href=""></a>    <span class="at">showcase =</span> bsicons<span class="sc">::</span><span class="fu">bs_icon</span>(<span class="st">"graph-up"</span>),</span>
+<span id="cb8-13"><a href=""></a>    <span class="fu">p</span>(<span class="st">"The 1st detail"</span>),</span>
+<span id="cb8-14"><a href=""></a>    <span class="at">theme =</span> <span class="st">'orange'</span></span>
+<span id="cb8-15"><a href=""></a>  )</span>
+<span id="cb8-16"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="bslib-grid grid bslib-mb-spacing html-fill-item" data-require-bs-caller="layout_columns()" data-require-bs-version="5" style="--bs-columns:2;">
+<div class="g-col-sm-1 g-col-lg-1 bslib-grid-item bslib-gap-spacing html-fill-container">
+<div class="card bslib-card bslib-mb-spacing html-fill-item html-fill-container bslib-value-box bg-orange showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card() value_box()" data-require-bs-version="5 5">
+<div class="card-body bslib-gap-spacing html-fill-item html-fill-container" style="margin-top:auto;margin-bottom:auto;flex:1 1 auto; padding:0;">
+<div class="value-box-grid html-fill-item" style="--bslib-grid-height:auto;--bslib-grid-height-mobile:auto;---bslib-value-box-showcase-w:30%;---bslib-value-box-showcase-w-fs:1fr;---bslib-value-box-showcase-max-h:100px;---bslib-value-box-showcase-max-h-fs:67%;">
+<div class="value-box-showcase html-fill-item html-fill-container"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 16 16" class="bi bi-bar-chart " style="height:1em;width:1em;fill:currentColor;vertical-align:-0.125em;" aria-hidden="true" role="img"><path d="M4 11H2v3h2v-3zm5-4H7v7h2V7zm5-5v12h-2V2h2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3z"></path></svg></div>
+<div class="value-box-area html-fill-item html-fill-container">
+<p class="value-box-title">1st value</p>
+<p class="value-box-value">123</p>
+<p>The 1st detail</p>
+</div>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script>
+</div>
+</div>
+<div class="g-col-sm-1 g-col-lg-1 bslib-grid-item bslib-gap-spacing html-fill-container">
+<div class="card bslib-card bslib-mb-spacing html-fill-item html-fill-container bslib-value-box bg-orange showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card() value_box()" data-require-bs-version="5 5">
+<div class="card-body bslib-gap-spacing html-fill-item html-fill-container" style="margin-top:auto;margin-bottom:auto;flex:1 1 auto; padding:0;">
+<div class="value-box-grid html-fill-item" style="--bslib-grid-height:auto;--bslib-grid-height-mobile:auto;---bslib-value-box-showcase-w:30%;---bslib-value-box-showcase-w-fs:1fr;---bslib-value-box-showcase-max-h:100px;---bslib-value-box-showcase-max-h-fs:67%;">
+<div class="value-box-showcase html-fill-item html-fill-container"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 16 16" class="bi bi-graph-up " style="height:1em;width:1em;fill:currentColor;vertical-align:-0.125em;" aria-hidden="true" role="img"><path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm14.817 3.113a.5.5 0 0 1 .07.704l-4.5 5.5a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61 4.15-5.073a.5.5 0 0 1 .704-.07Z"></path></svg></div>
+<div class="value-box-area html-fill-item html-fill-container">
+<p class="value-box-title">2nd value</p>
+<p class="value-box-value">234.234</p>
+<p>The 1st detail</p>
+</div>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script>
+</div>
+</div>
 </div>
 </div>
 </div>
