@@ -1,0 +1,199 @@
+---
+title: "The bslib R package for creating Shiny dashboards"
+title-slide-attributes:
+  data-background-position: top
+  data-background-image: title-screen-package-logos.png
+  data-background-size: contain
+  data-background-opacity: "1"
+subtitle: "DfE Coffee and Coding"
+author: "Rich Bielby, Statistics Development Team"
+institute: Department for Education
+format:
+  revealjs: 
+    theme: [dark, custom.scss]
+    width: 120%
+    height: 120%
+    logo: DfE_logo_landscape.png
+---
+
+```{r echo=FALSE}
+# Render me using quarto::quarto_render("2024-07-02-bslib/bslib-bielbyr.qmd")
+library(shiny)
+library(shinyGovstyle)
+library(bslib)
+```
+## The bslib R package
+
+:::: {.columns}
+::: {.column width="70%"}
+The Statistics Development Team are developing packages for use in R to support the analytical community in having common useful functions readily available for their work. 
+
+They're published on the [DfE Analytical Services GitHub page](https://github.com/dfe-analytical-services) and are ready to use.
+
+In this coffee and coding, I'll give a brief introduction to what the scope of these packages is, how to install them, demo some of their functionality and tell you how you can help!
+
+:::
+::: {.column width="30%"}
+[![](dfe-analytical-services.png){fig-align="right"}](https://github.com/dfe-analytical-services)
+:::
+::::
+
+## A brief intro into Shiny UIs
+
+Most of the user-interface building functions in Shiny are just creating some html code. For example you could use html to create all sorts of inputs including text boxes, file uploaders and radio buttons:
+
+::::: {.fragment .fade-in}
+:::: {.columns}
+::: {.column width="32%"}
+### R / Shiny
+
+```{r eval=TRUE, echo=TRUE}
+shiny::textInput(
+  "text-input-1", 
+  label = "Text input: "
+)
+```
+:::
+::: {.column width="64%"}
+### html
+
+```{html eval=FALSE, echo=TRUE}
+<div class="form-group shiny-input-container">
+  <label class="control-label" id="text-input-1-label" for="text-input-1">Text input: </label>
+  <input id="text-input-1" type="text" class="shiny-input-text form-control" value=""/>
+</div>
+```
+:::
+::::
+:::::
+
+## A brief intro into Shiny UIs
+
+Most of the user-interface building functions in Shiny are just creating some html code. For example you could use html to create all sorts of inputs including text boxes, file uploaders and radio buttons:
+
+
+:::: {.columns}
+::: {.column width="32%"}
+### R / Shiny
+
+```{r eval=TRUE, echo=TRUE}
+shiny::fileInput(
+  "file-upload-1", 
+  label = "File upload input"
+)
+```
+:::
+::: {.column width="64%"}
+### html
+
+```{html eval=FALSE, echo=TRUE}
+<div class="form-group shiny-input-container">
+  <label class="control-label" id="file-upload-1-label" for="file-upload-1">File upload input</label>
+  <div class="input-group">
+    <label class="input-group-btn input-group-prepend">
+      <span class="btn btn-default btn-file">
+        Browse...
+        <input id="file-upload-1" class="shiny-input-file" name="file-upload-1" type="file" style="position: absolute !important; top: -99999px !important; left: -99999px !important;"/>
+      </span>
+    </label>
+    <input type="text" class="form-control" placeholder="No file selected" readonly="readonly"/>
+  </div>
+  <div id="file-upload-1_progress" class="progress active shiny-file-input-progress">
+    <div class="progress-bar"></div>
+  </div>
+</div>
+```
+:::
+::::
+
+## A brief intro into Shiny UIs
+
+Most of the user-interface building functions in Shiny are just creating some html code. For example you could use html to create all sorts of inputs including text boxes, file uploaders and radio buttons:
+
+:::: {.columns}
+::: {.column width="32%"}
+### R / Shiny
+
+```{r echo=TRUE}
+shiny::radioButtons(
+   "radio-buttons-1", 
+   choices = c("England", "Switzerland"), 
+   label = "Some radio buttons"
+)
+```
+:::
+::: {.column width="64%"}
+### html
+
+```{html eval=FALSE, echo=TRUE}
+<div id="radio-buttons-1" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="radio-buttons-1-label">
+  <label class="control-label" id="radio-buttons-1-label" for="radio-buttons-1">Some radio buttons</label>
+  <div class="shiny-options-group">
+    <div class="radio">
+      <label>
+        <input type="radio" name="radio-buttons-1" value="England" checked="checked"/>
+        <span>England</span>
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <input type="radio" name="radio-buttons-1" value="Switzerland"/>
+        <span>Switzerland</span>
+      </label>
+    </div>
+  </div>
+</div>
+```
+:::
+::::
+
+
+::::: {.fragment .fade-in}
+All these Shiny functions use basic `html` code and functionality, but there's a lot more out there that you can use to build attractive, dynamic web content and one of these is **Bootstrap**.
+:::::
+
+## What is **Bootstrap**?
+
+:::: {.columns}
+::: {.column width="64%"}
+**Bootstrap** provides a toolkit of off the shelf **JavaScript** and **css** for building more complex components in webpages above and beyond what you can do with **html**.
+
+[![](bootstrap-frontpage.png){fig-align="center"}](http://www.getbootstrap.com)
+
+:::
+::: {.column width="32%"}
+[![](images/bootstrap-features.png){fig-align="center"}](http://www.getbootstrap.com)
+:::
+::::
+
+## Using Bootstrap with Shiny
+
+Just as `Shiny` has functions that can produce html code for you, the `bslib` package does the same with **Bootstrap**. It provides R commands that can automatically generate **Bootstrap** elements to build and produce your webpage.
+
+::::{.columns}
+::: {.column width="32%"}
+[![](images/bslib-overview.png){fig-align="center"}](https://rstudio.github.io/bslib/index.html)
+:::
+::: {.column width="32%"}
+Some of the most useful functions in `bslib` are:
+
+* `layout_columns()`
+* `card()`
+* `value_box()`
+* `accordion_panel()` / `accordion()`
+
+:::
+::: {.column width="32%"}
+[![](images/bslib-valueboxes.png){fig-align="center"}](https://rstudio.github.io/bslib/index.html)
+
+::::::{.columns}
+::::: {.column width="48%"}
+[![](images/bslib-card-1.png){fig-align="center"}](https://rstudio.github.io/bslib/index.html)
+:::::
+::::: {.column width="49%"}
+[![](images/bslib-card-2.png){fig-align="center"}](https://rstudio.github.io/bslib/index.html)
+:::::
+::::::
+:::
+
+::::
