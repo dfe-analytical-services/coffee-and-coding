@@ -24,21 +24,31 @@ library(bslib)
 library(bsicons)
 library(ggplot2)
 library(plotly)
-theme = bslib::bs_theme(bootswatch = "minty")
+library(styler)
 ```
 
 ```{r echo=FALSE}
 example_plot_a <- ggplotly(
-  mtcars %>% 
+  mtcars %>%
     rename(Weight = wt, MPG = mpg) %>%
-    ggplot2::ggplot(ggplot2::aes(x=Weight, y=MPG)) +
-    ggplot2::geom_point() + 
-    ggplot2::theme_classic() + 
+    ggplot2::ggplot(ggplot2::aes(x = Weight, y = MPG)) +
+    ggplot2::geom_point(colour="#801650") +
+    ggplot2::theme_classic() +
     theme(
-      axis.text=element_text(size=14),
-      axis.title=element_text(size=16,face="bold")
+      axis.text = element_text(size = 14),
+      axis.title = element_text(size = 16, face = "bold")
     )
+)
+example_plot_b <- ggplotly(
+  mtcars %>%
+    ggplot2::ggplot(ggplot2::aes(x = mpg)) +
+    ggplot2::geom_histogram(binwidth=2.5, fill="#801650") +
+    ggplot2::theme_classic() +
+    theme(
+      axis.text = element_text(size = 14),
+      axis.title = element_text(size = 16, face = "bold")
     )
+)
 ```
 
 
@@ -69,7 +79,7 @@ Most of the user-interface building functions in Shiny are just creating some ht
 
 ```{r eval=TRUE, echo=TRUE}
 shiny::textInput(
-  "text-input-1", 
+  "text-input-1",
   label = "Text input: "
 )
 ```
@@ -98,7 +108,7 @@ Most of the user-interface building functions in Shiny are just creating some ht
 
 ```{r eval=TRUE, echo=TRUE}
 shiny::fileInput(
-  "file-upload-1", 
+  "file-upload-1",
   label = "File upload input"
 )
 ```
@@ -136,9 +146,9 @@ Most of the user-interface building functions in Shiny are just creating some ht
 
 ```{r echo=TRUE}
 shiny::radioButtons(
-   "radio-buttons-1", 
-   choices = c("England", "Switzerland"), 
-   label = "Some radio buttons"
+  "radio-buttons-1",
+  choices = c("England", "Switzerland"),
+  label = "Some radio buttons"
 )
 ```
 :::
@@ -191,26 +201,26 @@ All these Shiny functions use basic `html` code and functionality, but there's a
 Just as `Shiny` has functions that can produce html code for you, the `bslib` package does the same with **Bootstrap**. It provides R commands that can automatically generate **Bootstrap** elements to build and produce your webpage.
 
 ::::{.columns}
-::: {.column width="32%"}
+::: {.column width="36%"}
 [![](images/bslib-overview.png){fig-align="center"}](https://rstudio.github.io/bslib/index.html)
 :::
-::: {.column width="32%"}
+::: {.column width="24%"}
 Some of the most useful functions in `bslib` are:
 
-* `layout_columns()`
 * `card()`
+* `layout_columns()`
 * `value_box()`
 * `accordion_panel()` / `accordion()`
 
 :::
-::: {.column width="32%"}
+::: {.column width="36%"}
 [![](images/bslib-valueboxes.png){fig-align="center"}](https://rstudio.github.io/bslib/index.html)
 
 ::::::{.columns}
 ::::: {.column width="48%"}
 [![](images/bslib-card-1.png){fig-align="center"}](https://rstudio.github.io/bslib/index.html)
 :::::
-::::: {.column width="49%"}
+::::: {.column width="48%"}
 [![](images/bslib-card-2.png){fig-align="center"}](https://rstudio.github.io/bslib/index.html)
 :::::
 ::::::
@@ -229,16 +239,43 @@ Cards are a really useful way to help individual content stand-out and support a
 bslib::card(
   bslib::card_header(
     "A car's economy is inversely proportional to its weight."
-    ),
+  ),
   bslib::card_body(example_plot_a),
   bslib::card_footer(
-    "The plot shows economy versus weight for a set of cars provided by the 
+    "The plot shows economy versus weight for a set of cars provided by the
     mtcars data set."
-    )
+  )
 )
 ```
 :::
 ::::
+
+## Organising columns in bslib
+
+::::{.columns}
+::: {.column width="36%"}
+Layouts can be handled a little bit differently when using `bslib` compared to the normal `shiny` method. Instead of having a `column()` entry for each column, you can use `layout_columns()` as one container for a set of columns. This can reduce the levels of bracket Armageddon in your code, but also provides better dynamic response to changing screen / browser window sizes.
+:::
+::: {.column width="64%"}
+```{r echo=TRUE, eval=TRUE}
+layout_columns(
+  bslib::card(
+    bslib::card_header(
+      "A car's economy is inversely proportional to its weight."
+    ),
+    bslib::card_body(example_plot_a)
+  ),
+  bslib::card(
+    bslib::card_header(
+      "The sample is a little biased towards lower economy cars."
+    ),
+    bslib::card_body(example_plot_b)
+  )
+)
+```
+:::
+::::
+
 
 ## Valueboxes in bslib
 
@@ -254,14 +291,14 @@ layout_columns(
     value = "123",
     showcase = bsicons::bs_icon("bar-chart"),
     p("The 1st detail"),
-    theme = 'orange'
+    theme = "orange"
   ),
   bslib::value_box(
     title = "2nd value",
     value = "234.234",
     showcase = bsicons::bs_icon("graph-up"),
     p("The 1st detail"),
-    theme = 'orange'
+    theme = "orange"
   )
 )
 ```

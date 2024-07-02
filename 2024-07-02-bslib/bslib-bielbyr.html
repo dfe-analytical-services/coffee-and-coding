@@ -457,7 +457,7 @@ Rich Bielby, Statistics Development Team
 <h3 id="r-shiny">R / Shiny</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>shiny<span class="sc">::</span><span class="fu">textInput</span>(</span>
-<span id="cb1-2"><a href=""></a>  <span class="st">"text-input-1"</span>, </span>
+<span id="cb1-2"><a href=""></a>  <span class="st">"text-input-1"</span>,</span>
 <span id="cb1-3"><a href=""></a>  <span class="at">label =</span> <span class="st">"Text input: "</span></span>
 <span id="cb1-4"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -487,7 +487,7 @@ Rich Bielby, Statistics Development Team
 <h3 id="r-shiny-1">R / Shiny</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>shiny<span class="sc">::</span><span class="fu">fileInput</span>(</span>
-<span id="cb3-2"><a href=""></a>  <span class="st">"file-upload-1"</span>, </span>
+<span id="cb3-2"><a href=""></a>  <span class="st">"file-upload-1"</span>,</span>
 <span id="cb3-3"><a href=""></a>  <span class="at">label =</span> <span class="st">"File upload input"</span></span>
 <span id="cb3-4"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -538,9 +538,9 @@ Browse...
 <h3 id="r-shiny-2">R / Shiny</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>shiny<span class="sc">::</span><span class="fu">radioButtons</span>(</span>
-<span id="cb5-2"><a href=""></a>   <span class="st">"radio-buttons-1"</span>, </span>
-<span id="cb5-3"><a href=""></a>   <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"England"</span>, <span class="st">"Switzerland"</span>), </span>
-<span id="cb5-4"><a href=""></a>   <span class="at">label =</span> <span class="st">"Some radio buttons"</span></span>
+<span id="cb5-2"><a href=""></a>  <span class="st">"radio-buttons-1"</span>,</span>
+<span id="cb5-3"><a href=""></a>  <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"England"</span>, <span class="st">"Switzerland"</span>),</span>
+<span id="cb5-4"><a href=""></a>  <span class="at">label =</span> <span class="st">"Some radio buttons"</span></span>
 <span id="cb5-5"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="radio-buttons-1" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="radio-buttons-1-label">
@@ -612,21 +612,21 @@ Browse...
 <h2>Using Bootstrap with Shiny</h2>
 <p>Just as <code>Shiny</code> has functions that can produce html code for you, the <code>bslib</code> package does the same with <strong>Bootstrap</strong>. It provides R commands that can automatically generate <strong>Bootstrap</strong> elements to build and produce your webpage.</p>
 <div class="columns">
-<div class="column" style="width:32%;">
+<div class="column" style="width:36%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><a href="https://rstudio.github.io/bslib/index.html"><img data-src="images/bslib-overview.png" class="quarto-figure quarto-figure-center"></a></p>
 </figure>
 </div>
-</div><div class="column" style="width:32%;">
+</div><div class="column" style="width:24%;">
 <p>Some of the most useful functions in <code>bslib</code> are:</p>
 <ul>
-<li><code>layout_columns()</code></li>
 <li><code>card()</code></li>
+<li><code>layout_columns()</code></li>
 <li><code>value_box()</code></li>
 <li><code>accordion_panel()</code> / <code>accordion()</code></li>
 </ul>
-</div><div class="column" style="width:32%;">
+</div><div class="column" style="width:36%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><a href="https://rstudio.github.io/bslib/index.html"><img data-src="images/bslib-valueboxes.png" class="quarto-figure quarto-figure-center"></a></p>
@@ -639,7 +639,7 @@ Browse...
 <p><a href="https://rstudio.github.io/bslib/index.html"><img data-src="images/bslib-card-1.png" class="quarto-figure quarto-figure-center"></a></p>
 </figure>
 </div>
-</div><div class="column" style="width:49%;">
+</div><div class="column" style="width:48%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><a href="https://rstudio.github.io/bslib/index.html"><img data-src="images/bslib-card-2.png" class="quarto-figure quarto-figure-center"></a></p>
@@ -660,23 +660,72 @@ Browse...
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>bslib<span class="sc">::</span><span class="fu">card</span>(</span>
 <span id="cb7-2"><a href=""></a>  bslib<span class="sc">::</span><span class="fu">card_header</span>(</span>
 <span id="cb7-3"><a href=""></a>    <span class="st">"A car's economy is inversely proportional to its weight."</span></span>
-<span id="cb7-4"><a href=""></a>    ),</span>
+<span id="cb7-4"><a href=""></a>  ),</span>
 <span id="cb7-5"><a href=""></a>  bslib<span class="sc">::</span><span class="fu">card_body</span>(example_plot_a),</span>
 <span id="cb7-6"><a href=""></a>  bslib<span class="sc">::</span><span class="fu">card_footer</span>(</span>
-<span id="cb7-7"><a href=""></a>    <span class="st">"The plot shows economy versus weight for a set of cars provided by the </span></span>
+<span id="cb7-7"><a href=""></a>    <span class="st">"The plot shows economy versus weight for a set of cars provided by the</span></span>
 <span id="cb7-8"><a href=""></a><span class="st">    mtcars data set."</span></span>
-<span id="cb7-9"><a href=""></a>    )</span>
+<span id="cb7-9"><a href=""></a>  )</span>
 <span id="cb7-10"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="card bslib-card bslib-mb-spacing html-fill-item html-fill-container" data-bslib-card-init="" data-require-bs-caller="card()" data-require-bs-version="5">
 <div class="card-header">A car's economy is inversely proportional to its weight.</div>
 <div class="card-body bslib-gap-spacing html-fill-item html-fill-container" style="margin-top:auto;margin-bottom:auto;flex:1 1 auto;">
-<div class="plotly html-widget html-fill-item" id="htmlwidget-640307d1151d01743915" style="width:100%;height:400px;"></div>
-<script type="application/json" data-for="htmlwidget-640307d1151d01743915">{"x":{"data":[{"x":[2.6200000000000001,2.875,2.3199999999999998,3.2149999999999999,3.4399999999999999,3.46,3.5699999999999998,3.1899999999999999,3.1499999999999999,3.4399999999999999,3.4399999999999999,4.0700000000000003,3.73,3.7799999999999998,5.25,5.4240000000000004,5.3449999999999998,2.2000000000000002,1.615,1.835,2.4649999999999999,3.52,3.4350000000000001,3.8399999999999999,3.8450000000000002,1.9350000000000001,2.1400000000000001,1.5129999999999999,3.1699999999999999,2.77,3.5699999999999998,2.7799999999999998],"y":[21,21,22.800000000000001,21.399999999999999,18.699999999999999,18.100000000000001,14.300000000000001,24.399999999999999,22.800000000000001,19.199999999999999,17.800000000000001,16.399999999999999,17.300000000000001,15.199999999999999,10.4,10.4,14.699999999999999,32.399999999999999,30.399999999999999,33.899999999999999,21.5,15.5,15.199999999999999,13.300000000000001,19.199999999999999,27.300000000000001,26,30.399999999999999,15.800000000000001,19.699999999999999,15,21.399999999999999],"text":["Weight: 2.620<br />MPG: 21.0","Weight: 2.875<br />MPG: 21.0","Weight: 2.320<br />MPG: 22.8","Weight: 3.215<br />MPG: 21.4","Weight: 3.440<br />MPG: 18.7","Weight: 3.460<br />MPG: 18.1","Weight: 3.570<br />MPG: 14.3","Weight: 3.190<br />MPG: 24.4","Weight: 3.150<br />MPG: 22.8","Weight: 3.440<br />MPG: 19.2","Weight: 3.440<br />MPG: 17.8","Weight: 4.070<br />MPG: 16.4","Weight: 3.730<br />MPG: 17.3","Weight: 3.780<br />MPG: 15.2","Weight: 5.250<br />MPG: 10.4","Weight: 5.424<br />MPG: 10.4","Weight: 5.345<br />MPG: 14.7","Weight: 2.200<br />MPG: 32.4","Weight: 1.615<br />MPG: 30.4","Weight: 1.835<br />MPG: 33.9","Weight: 2.465<br />MPG: 21.5","Weight: 3.520<br />MPG: 15.5","Weight: 3.435<br />MPG: 15.2","Weight: 3.840<br />MPG: 13.3","Weight: 3.845<br />MPG: 19.2","Weight: 1.935<br />MPG: 27.3","Weight: 2.140<br />MPG: 26.0","Weight: 1.513<br />MPG: 30.4","Weight: 3.170<br />MPG: 15.8","Weight: 2.770<br />MPG: 19.7","Weight: 3.570<br />MPG: 15.0","Weight: 2.780<br />MPG: 21.4"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,0,0,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":30.611872146118724,"r":7.3059360730593621,"b":58.115400581154006,"l":50.809464508094642},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[1.3174499999999998,5.6195500000000003],"tickmode":"array","ticktext":["2","3","4","5"],"tickvals":[2,3,4,5],"categoryorder":"array","categoryarray":["2","3","4","5"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":18.596928185969279},"tickangle":-0,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.66417600664176002,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"<b> Weight <\/b>","font":{"color":"rgba(0,0,0,1)","family":"","size":21.253632212536321}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[9.2249999999999996,35.074999999999996],"tickmode":"array","ticktext":["10","15","20","25","30","35"],"tickvals":[10,15,20,25,30,35],"categoryorder":"array","categoryarray":["10","15","20","25","30","35"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":18.596928185969279},"tickangle":-0,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.66417600664176002,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"x","title":{"text":"<b> MPG <\/b>","font":{"color":"rgba(0,0,0,1)","family":"","size":21.253632212536321}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.8897637795275593,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"4d8449ab3991":{"x":{},"y":{},"type":"scatter"}},"cur_data":"4d8449ab3991","visdat":{"4d8449ab3991":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-1830486ac68ed5379563" style="width:100%;height:400px;"></div>
+<script type="application/json" data-for="htmlwidget-1830486ac68ed5379563">{"x":{"data":[{"x":[2.6200000000000001,2.875,2.3199999999999998,3.2149999999999999,3.4399999999999999,3.46,3.5699999999999998,3.1899999999999999,3.1499999999999999,3.4399999999999999,3.4399999999999999,4.0700000000000003,3.73,3.7799999999999998,5.25,5.4240000000000004,5.3449999999999998,2.2000000000000002,1.615,1.835,2.4649999999999999,3.52,3.4350000000000001,3.8399999999999999,3.8450000000000002,1.9350000000000001,2.1400000000000001,1.5129999999999999,3.1699999999999999,2.77,3.5699999999999998,2.7799999999999998],"y":[21,21,22.800000000000001,21.399999999999999,18.699999999999999,18.100000000000001,14.300000000000001,24.399999999999999,22.800000000000001,19.199999999999999,17.800000000000001,16.399999999999999,17.300000000000001,15.199999999999999,10.4,10.4,14.699999999999999,32.399999999999999,30.399999999999999,33.899999999999999,21.5,15.5,15.199999999999999,13.300000000000001,19.199999999999999,27.300000000000001,26,30.399999999999999,15.800000000000001,19.699999999999999,15,21.399999999999999],"text":["Weight: 2.620<br />MPG: 21.0","Weight: 2.875<br />MPG: 21.0","Weight: 2.320<br />MPG: 22.8","Weight: 3.215<br />MPG: 21.4","Weight: 3.440<br />MPG: 18.7","Weight: 3.460<br />MPG: 18.1","Weight: 3.570<br />MPG: 14.3","Weight: 3.190<br />MPG: 24.4","Weight: 3.150<br />MPG: 22.8","Weight: 3.440<br />MPG: 19.2","Weight: 3.440<br />MPG: 17.8","Weight: 4.070<br />MPG: 16.4","Weight: 3.730<br />MPG: 17.3","Weight: 3.780<br />MPG: 15.2","Weight: 5.250<br />MPG: 10.4","Weight: 5.424<br />MPG: 10.4","Weight: 5.345<br />MPG: 14.7","Weight: 2.200<br />MPG: 32.4","Weight: 1.615<br />MPG: 30.4","Weight: 1.835<br />MPG: 33.9","Weight: 2.465<br />MPG: 21.5","Weight: 3.520<br />MPG: 15.5","Weight: 3.435<br />MPG: 15.2","Weight: 3.840<br />MPG: 13.3","Weight: 3.845<br />MPG: 19.2","Weight: 1.935<br />MPG: 27.3","Weight: 2.140<br />MPG: 26.0","Weight: 1.513<br />MPG: 30.4","Weight: 3.170<br />MPG: 15.8","Weight: 2.770<br />MPG: 19.7","Weight: 3.570<br />MPG: 15.0","Weight: 2.780<br />MPG: 21.4"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(128,22,80,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(128,22,80,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":30.611872146118724,"r":7.3059360730593621,"b":58.115400581154006,"l":50.809464508094642},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[1.3174499999999998,5.6195500000000003],"tickmode":"array","ticktext":["2","3","4","5"],"tickvals":[2,3,4,5],"categoryorder":"array","categoryarray":["2","3","4","5"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":18.596928185969279},"tickangle":-0,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.66417600664176002,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"<b> Weight <\/b>","font":{"color":"rgba(0,0,0,1)","family":"","size":21.253632212536321}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[9.2249999999999996,35.074999999999996],"tickmode":"array","ticktext":["10","15","20","25","30","35"],"tickvals":[10,15,20,25,30,35],"categoryorder":"array","categoryarray":["10","15","20","25","30","35"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":18.596928185969279},"tickangle":-0,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.66417600664176002,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"x","title":{"text":"<b> MPG <\/b>","font":{"color":"rgba(0,0,0,1)","family":"","size":21.253632212536321}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.8897637795275593,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"900517e5719":{"x":{},"y":{},"type":"scatter"}},"cur_data":"900517e5719","visdat":{"900517e5719":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
-<div class="card-footer">The plot shows economy versus weight for a set of cars provided by the 
+<div class="card-footer">The plot shows economy versus weight for a set of cars provided by the
     mtcars data set.</div>
 <script data-bslib-card-init="">bslib.Card.initializeAllCards();</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="organising-columns-in-bslib" class="slide level2">
+<h2>Organising columns in bslib</h2>
+<div class="columns">
+<div class="column" style="width:36%;">
+<p>Layouts can be handled a little bit differently when using <code>bslib</code> compared to the normal <code>shiny</code> method. Instead of having a <code>column()</code> entry for each column, you can use <code>layout_columns()</code> as one container for a set of columns. This can reduce the levels of bracket Armageddon in your code, but also provides better dynamic response to changing screen / browser window sizes.</p>
+</div><div class="column" style="width:64%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="fu">layout_columns</span>(</span>
+<span id="cb8-2"><a href=""></a>  bslib<span class="sc">::</span><span class="fu">card</span>(</span>
+<span id="cb8-3"><a href=""></a>    bslib<span class="sc">::</span><span class="fu">card_header</span>(</span>
+<span id="cb8-4"><a href=""></a>      <span class="st">"A car's economy is inversely proportional to its weight."</span></span>
+<span id="cb8-5"><a href=""></a>    ),</span>
+<span id="cb8-6"><a href=""></a>    bslib<span class="sc">::</span><span class="fu">card_body</span>(example_plot_a)</span>
+<span id="cb8-7"><a href=""></a>  ),</span>
+<span id="cb8-8"><a href=""></a>  bslib<span class="sc">::</span><span class="fu">card</span>(</span>
+<span id="cb8-9"><a href=""></a>    bslib<span class="sc">::</span><span class="fu">card_header</span>(</span>
+<span id="cb8-10"><a href=""></a>      <span class="st">"The sample is a little biased towards lower economy cars."</span></span>
+<span id="cb8-11"><a href=""></a>    ),</span>
+<span id="cb8-12"><a href=""></a>    bslib<span class="sc">::</span><span class="fu">card_body</span>(example_plot_b)</span>
+<span id="cb8-13"><a href=""></a>  )</span>
+<span id="cb8-14"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="bslib-grid grid bslib-mb-spacing html-fill-item" data-require-bs-caller="layout_columns()" data-require-bs-version="5" style="--bs-columns:2;">
+<div class="g-col-sm-1 g-col-lg-1 bslib-grid-item bslib-gap-spacing html-fill-container">
+<div class="card bslib-card bslib-mb-spacing html-fill-item html-fill-container" data-bslib-card-init="" data-require-bs-caller="card()" data-require-bs-version="5">
+<div class="card-header">A car's economy is inversely proportional to its weight.</div>
+<div class="card-body bslib-gap-spacing html-fill-item html-fill-container" style="margin-top:auto;margin-bottom:auto;flex:1 1 auto;">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-e8136d0598bdd2c5296a" style="width:100%;height:400px;"></div>
+<script type="application/json" data-for="htmlwidget-e8136d0598bdd2c5296a">{"x":{"data":[{"x":[2.6200000000000001,2.875,2.3199999999999998,3.2149999999999999,3.4399999999999999,3.46,3.5699999999999998,3.1899999999999999,3.1499999999999999,3.4399999999999999,3.4399999999999999,4.0700000000000003,3.73,3.7799999999999998,5.25,5.4240000000000004,5.3449999999999998,2.2000000000000002,1.615,1.835,2.4649999999999999,3.52,3.4350000000000001,3.8399999999999999,3.8450000000000002,1.9350000000000001,2.1400000000000001,1.5129999999999999,3.1699999999999999,2.77,3.5699999999999998,2.7799999999999998],"y":[21,21,22.800000000000001,21.399999999999999,18.699999999999999,18.100000000000001,14.300000000000001,24.399999999999999,22.800000000000001,19.199999999999999,17.800000000000001,16.399999999999999,17.300000000000001,15.199999999999999,10.4,10.4,14.699999999999999,32.399999999999999,30.399999999999999,33.899999999999999,21.5,15.5,15.199999999999999,13.300000000000001,19.199999999999999,27.300000000000001,26,30.399999999999999,15.800000000000001,19.699999999999999,15,21.399999999999999],"text":["Weight: 2.620<br />MPG: 21.0","Weight: 2.875<br />MPG: 21.0","Weight: 2.320<br />MPG: 22.8","Weight: 3.215<br />MPG: 21.4","Weight: 3.440<br />MPG: 18.7","Weight: 3.460<br />MPG: 18.1","Weight: 3.570<br />MPG: 14.3","Weight: 3.190<br />MPG: 24.4","Weight: 3.150<br />MPG: 22.8","Weight: 3.440<br />MPG: 19.2","Weight: 3.440<br />MPG: 17.8","Weight: 4.070<br />MPG: 16.4","Weight: 3.730<br />MPG: 17.3","Weight: 3.780<br />MPG: 15.2","Weight: 5.250<br />MPG: 10.4","Weight: 5.424<br />MPG: 10.4","Weight: 5.345<br />MPG: 14.7","Weight: 2.200<br />MPG: 32.4","Weight: 1.615<br />MPG: 30.4","Weight: 1.835<br />MPG: 33.9","Weight: 2.465<br />MPG: 21.5","Weight: 3.520<br />MPG: 15.5","Weight: 3.435<br />MPG: 15.2","Weight: 3.840<br />MPG: 13.3","Weight: 3.845<br />MPG: 19.2","Weight: 1.935<br />MPG: 27.3","Weight: 2.140<br />MPG: 26.0","Weight: 1.513<br />MPG: 30.4","Weight: 3.170<br />MPG: 15.8","Weight: 2.770<br />MPG: 19.7","Weight: 3.570<br />MPG: 15.0","Weight: 2.780<br />MPG: 21.4"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(128,22,80,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(128,22,80,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":30.611872146118724,"r":7.3059360730593621,"b":58.115400581154006,"l":50.809464508094642},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[1.3174499999999998,5.6195500000000003],"tickmode":"array","ticktext":["2","3","4","5"],"tickvals":[2,3,4,5],"categoryorder":"array","categoryarray":["2","3","4","5"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":18.596928185969279},"tickangle":-0,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.66417600664176002,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"<b> Weight <\/b>","font":{"color":"rgba(0,0,0,1)","family":"","size":21.253632212536321}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[9.2249999999999996,35.074999999999996],"tickmode":"array","ticktext":["10","15","20","25","30","35"],"tickvals":[10,15,20,25,30,35],"categoryorder":"array","categoryarray":["10","15","20","25","30","35"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":18.596928185969279},"tickangle":-0,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.66417600664176002,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"x","title":{"text":"<b> MPG <\/b>","font":{"color":"rgba(0,0,0,1)","family":"","size":21.253632212536321}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.8897637795275593,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"900517e5719":{"x":{},"y":{},"type":"scatter"}},"cur_data":"900517e5719","visdat":{"900517e5719":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script>
+</div>
+</div>
+<div class="g-col-sm-1 g-col-lg-1 bslib-grid-item bslib-gap-spacing html-fill-container">
+<div class="card bslib-card bslib-mb-spacing html-fill-item html-fill-container" data-bslib-card-init="" data-require-bs-caller="card()" data-require-bs-version="5">
+<div class="card-header">The sample is a little biased towards lower economy cars.</div>
+<div class="card-body bslib-gap-spacing html-fill-item html-fill-container" style="margin-top:auto;margin-bottom:auto;flex:1 1 auto;">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-a0aafb72949f039066ad" style="width:100%;height:400px;"></div>
+<script type="application/json" data-for="htmlwidget-a0aafb72949f039066ad">{"x":{"data":[{"orientation":"v","width":[2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5],"base":[0,0,0,0,0,0,0,0,0,0,0],"x":[10,12.5,15,17.5,20,22.5,25,27.5,30,32.5,35],"y":[2,1,7,5,5,5,2,1,2,1,1],"text":["count: 2<br />mpg: 10.0","count: 1<br />mpg: 12.5","count: 7<br />mpg: 15.0","count: 5<br />mpg: 17.5","count: 5<br />mpg: 20.0","count: 5<br />mpg: 22.5","count: 2<br />mpg: 25.0","count: 1<br />mpg: 27.5","count: 2<br />mpg: 30.0","count: 1<br />mpg: 32.5","count: 1<br />mpg: 35.0"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(128,22,80,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":30.611872146118724,"r":7.3059360730593621,"b":58.115400581154006,"l":41.511000415110004},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[7.375,37.625],"tickmode":"array","ticktext":["10","20","30"],"tickvals":[10,20,30],"categoryorder":"array","categoryarray":["10","20","30"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":18.596928185969279},"tickangle":-0,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.66417600664176002,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"<b> mpg <\/b>","font":{"color":"rgba(0,0,0,1)","family":"","size":21.253632212536321}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.35000000000000003,7.3499999999999996],"tickmode":"array","ticktext":["0","2","4","6"],"tickvals":[0,2,3.9999999999999996,6],"categoryorder":"array","categoryarray":["0","2","4","6"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":18.596928185969279},"tickangle":-0,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.66417600664176002,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"x","title":{"text":"<b> count <\/b>","font":{"color":"rgba(0,0,0,1)","family":"","size":21.253632212536321}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.8897637795275593,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"900299012a9":{"x":{},"type":"bar"}},"cur_data":"900299012a9","visdat":{"900299012a9":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -690,22 +739,22 @@ Browse...
 <p>Quite a few of our dashboards use <code>shinydashboard</code>, but will hopefully have noticed a warning message saying it’s no longer maintained (it hasn’t been updated for 3 years now). One of the main reasons analysts use <code>shinydashboard</code> is for <strong>valueboxes</strong> and <code>bslib</code> provides an up to date alternative to use instead.</p>
 </div><div class="column" style="width:64%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="fu">layout_columns</span>(</span>
-<span id="cb8-2"><a href=""></a>  bslib<span class="sc">::</span><span class="fu">value_box</span>(</span>
-<span id="cb8-3"><a href=""></a>    <span class="at">title =</span> <span class="st">"1st value"</span>,</span>
-<span id="cb8-4"><a href=""></a>    <span class="at">value =</span> <span class="st">"123"</span>,</span>
-<span id="cb8-5"><a href=""></a>    <span class="at">showcase =</span> bsicons<span class="sc">::</span><span class="fu">bs_icon</span>(<span class="st">"bar-chart"</span>),</span>
-<span id="cb8-6"><a href=""></a>    <span class="fu">p</span>(<span class="st">"The 1st detail"</span>),</span>
-<span id="cb8-7"><a href=""></a>    <span class="at">theme =</span> <span class="st">'orange'</span></span>
-<span id="cb8-8"><a href=""></a>  ),</span>
-<span id="cb8-9"><a href=""></a>  bslib<span class="sc">::</span><span class="fu">value_box</span>(</span>
-<span id="cb8-10"><a href=""></a>    <span class="at">title =</span> <span class="st">"2nd value"</span>,</span>
-<span id="cb8-11"><a href=""></a>    <span class="at">value =</span> <span class="st">"234.234"</span>,</span>
-<span id="cb8-12"><a href=""></a>    <span class="at">showcase =</span> bsicons<span class="sc">::</span><span class="fu">bs_icon</span>(<span class="st">"graph-up"</span>),</span>
-<span id="cb8-13"><a href=""></a>    <span class="fu">p</span>(<span class="st">"The 1st detail"</span>),</span>
-<span id="cb8-14"><a href=""></a>    <span class="at">theme =</span> <span class="st">'orange'</span></span>
-<span id="cb8-15"><a href=""></a>  )</span>
-<span id="cb8-16"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="fu">layout_columns</span>(</span>
+<span id="cb9-2"><a href=""></a>  bslib<span class="sc">::</span><span class="fu">value_box</span>(</span>
+<span id="cb9-3"><a href=""></a>    <span class="at">title =</span> <span class="st">"1st value"</span>,</span>
+<span id="cb9-4"><a href=""></a>    <span class="at">value =</span> <span class="st">"123"</span>,</span>
+<span id="cb9-5"><a href=""></a>    <span class="at">showcase =</span> bsicons<span class="sc">::</span><span class="fu">bs_icon</span>(<span class="st">"bar-chart"</span>),</span>
+<span id="cb9-6"><a href=""></a>    <span class="fu">p</span>(<span class="st">"The 1st detail"</span>),</span>
+<span id="cb9-7"><a href=""></a>    <span class="at">theme =</span> <span class="st">"orange"</span></span>
+<span id="cb9-8"><a href=""></a>  ),</span>
+<span id="cb9-9"><a href=""></a>  bslib<span class="sc">::</span><span class="fu">value_box</span>(</span>
+<span id="cb9-10"><a href=""></a>    <span class="at">title =</span> <span class="st">"2nd value"</span>,</span>
+<span id="cb9-11"><a href=""></a>    <span class="at">value =</span> <span class="st">"234.234"</span>,</span>
+<span id="cb9-12"><a href=""></a>    <span class="at">showcase =</span> bsicons<span class="sc">::</span><span class="fu">bs_icon</span>(<span class="st">"graph-up"</span>),</span>
+<span id="cb9-13"><a href=""></a>    <span class="fu">p</span>(<span class="st">"The 1st detail"</span>),</span>
+<span id="cb9-14"><a href=""></a>    <span class="at">theme =</span> <span class="st">"orange"</span></span>
+<span id="cb9-15"><a href=""></a>  )</span>
+<span id="cb9-16"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="bslib-grid grid bslib-mb-spacing html-fill-item" data-require-bs-caller="layout_columns()" data-require-bs-version="5" style="--bs-columns:2;">
 <div class="g-col-sm-1 g-col-lg-1 bslib-grid-item bslib-gap-spacing html-fill-container">
