@@ -1,6 +1,7 @@
 valueboxes <- function(){
   tabPanel(
     "Value boxes",
+    h2("Value boxes"),
     layout_columns(
       bslib::value_box(
         title = "1st value",

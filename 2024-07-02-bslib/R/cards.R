@@ -25,6 +25,7 @@ example_plot_b <- ggplotly(
 cards_columns <- function(){
   tabPanel(
     "Cards and columns",
+    h2("Cards and columns"),
     layout_columns(
       bslib::card(
         bslib::card_header(

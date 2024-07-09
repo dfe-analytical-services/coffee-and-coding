@@ -25,6 +25,7 @@ example_plot_b <- ggplotly(
 accordions <- function(){
   tabPanel(
     "Accordions",
+    h2("Accordions"),
     bslib::accordion(
       bslib::accordion_panel("Section A", example_plot_a),
       bslib::accordion_panel("Section B", example_plot_b)

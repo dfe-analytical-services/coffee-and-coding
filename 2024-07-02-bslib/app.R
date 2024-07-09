@@ -21,6 +21,7 @@ ui <- page_fluid(
     id = "navlistPanel",
     widths = c(2, 8),
     well = FALSE,
+    shiny_basics(),
     cards_columns(),
     valueboxes(),
     accordions()
