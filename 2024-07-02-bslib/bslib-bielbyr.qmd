@@ -13,7 +13,7 @@ format:
     theme: [dark, custom.scss]
     width: 120%
     height: 120%
-    logo: DfE_logo_landscape.png
+    logo: images/DfE_logo_landscape.png
 ---
 
 ```{r echo=FALSE}
@@ -55,16 +55,19 @@ example_plot_b <- ggplotly(
 ## The bslib R package
 
 :::: {.columns}
-::: {.column width="70%"}
-The Statistics Development Team are developing packages for use in R to support the analytical community in having common useful functions readily available for their work. 
+::: {.column width="60%"}
+In this coffee and coding, I'll give a brief introduction to the `bslib` package and what it can offer dashboard builders.
 
-They're published on the [DfE Analytical Services GitHub page](https://github.com/dfe-analytical-services) and are ready to use.
-
-In this coffee and coding, I'll give a brief introduction to what the scope of these packages is, how to install them, demo some of their functionality and tell you how you can help!
+- Bit of background on how `shiny` creates user-interface (webpage) elements.
+- How `bslib` complements this
+  - Cards
+  - Column layouts
+  - Valueboxes
+  - Accordions
 
 :::
-::: {.column width="30%"}
-[![](dfe-analytical-services.png){fig-align="right"}](https://github.com/dfe-analytical-services)
+::: {.column width="40%"}
+[![](images/bslib-front-page.png){fig-align="right"}](https://rstudio.github.io/bslib/articles/any-project/index.html)
 :::
 ::::
 
@@ -326,8 +329,8 @@ Quite a few of our dashboards use `shinydashboard`, but will hopefully have noti
 
 ::::{.columns}
 ::: {.column width="36%"}
-I've created a very small [demo dashboard in Coffee and Coding repository]() if anyone wants to have an explore of the code in situ.
-![](images/accordions-preview.png)
+I've created a very small [demo dashboard in Coffee and Coding repository](https://github.com/dfe-analytical-services/coffee-and-coding/blob/bielbyr-bslib/2024-07-02-bslib/app.R) if anyone wants to have an explore of the code in situ.
+![](images/app-preview.png)
 :::
 ::: {.column width="64%"}
 ```{r echo=TRUE, eval=FALSE}
@@ -350,7 +353,8 @@ ui <- page_fluid(
     accordions()
   ),
   footer(full = TRUE)
-)```
+)
+```
 :::
 ::::
 
