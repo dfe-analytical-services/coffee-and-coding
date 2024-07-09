@@ -304,3 +304,53 @@ layout_columns(
 ```
 :::
 ::::
+
+## Accordions in bslib
+
+::::{.columns}
+::: {.column width="36%"}
+Quite a few of our dashboards use `shinydashboard`, but will hopefully have noticed a warning message saying it's no longer maintained (it hasn't been updated for 3 years now). One of the main reasons analysts use `shinydashboard` is for **valueboxes** and `bslib` provides an up to date alternative to use instead.
+:::
+::: {.column width="64%"}
+```{r echo=TRUE, eval=FALSE}
+      bslib::accordion(
+        bslib::accordion_panel("Section A", example_plot_a),
+        bslib::accordion_panel("Section B", example_plot_b)
+      )
+```
+![](images/accordions-preview.png)
+:::
+::::
+
+## Demo dashboard
+
+::::{.columns}
+::: {.column width="36%"}
+I've created a very small [demo dashboard in Coffee and Coding repository]() if anyone wants to have an explore of the code in situ.
+![](images/accordions-preview.png)
+:::
+::: {.column width="64%"}
+```{r echo=TRUE, eval=FALSE}
+ui <- page_fluid(
+  shinyGovstyle::header(
+    main_text = "",
+    main_link = "https://www.gov.uk/government/organisations/department-for-education",
+    secondary_text = "Coffee and Coding demo",
+    logo = "https://department-for-education.shinyapps.io/pupil-attendance-in-schools/_w_6d98db03/images/DfE_logo_landscape.png",
+    logo_width = 150,
+    logo_height = 32
+  ),
+  shiny::navlistPanel(
+    "",
+    id = "navlistPanel",
+    widths = c(2, 8),
+    well = FALSE,
+    cards_columns(),
+    valueboxes(),
+    accordions()
+  ),
+  footer(full = TRUE)
+)```
+:::
+::::
+
