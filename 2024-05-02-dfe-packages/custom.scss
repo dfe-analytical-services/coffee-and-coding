@@ -14,3 +14,21 @@ $link-color: #42affa;
   margin-top: 0.6em !important;
   color: #efefef !important;
 }
+
+.label {
+    font-family: GDS Transport, arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.25;
+    color: #0b0c0c;
+    display: block;
+    margin-bottom: 5px
+}
+
+input[type='radio'] {
+  height: 45px;
+  width: 45px;
+  vertical-align: middle;
+}
